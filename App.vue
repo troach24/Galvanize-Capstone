@@ -1,17 +1,24 @@
 <template>
-  <view class="container">
-    <text class="text-color-primary">My Vue Native App</text>
-    </view>
+  <app-navigation></app-navigation>
 </template>
- 
-<style>
-.container {
-  background-color: white;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
+
+<script>
+import { StackNavigator } from "vue-native-router";
+import MainScreen from './screens/Main';
+// import IconTextFooterScreen from "./screens/iconTextFooter";
+// import AnotherScreen from './Another';
+
+const AppNavigation = StackNavigator(
+  {
+    Main: MainScreen,
+    // Another: AnotherScreen,
+    // IconText: IconTextFooterScreen,
+  },
+  {
+    initialRouteName: 'Main',
+  }
+);
+export default {
+    components: { AppNavigation }
 }
-.text-color-primary {
-  color: blue;
-}
-</style>
+</script>
