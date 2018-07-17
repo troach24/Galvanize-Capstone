@@ -1,23 +1,57 @@
 <template>
   <view class="container">
-    <!-- <text class="text-color-primary">My Vue Native App</text> -->
     <image
     :style="{ marginBottom: 20, width: 200, height: 200}"
     :source="{uri: 
     'https://thumbs.dreamstime.com/b/golf-ball-5400074.jpg'}"/>
-    <touchable-opacity :on-press="handleButton" class="home-button">
+    <touchable-opacity :on-press="openReservations" class="home-button">
       <text class="home-button-text">Tee Times</text>
     </touchable-opacity>
-    <touchable-opacity class="home-button">
+    <touchable-opacity :on-press="openFoodDrink" class="home-button">
       <text class="home-button-text">Food &amp; Drink</text>
     </touchable-opacity>
     <view>
       <status-bar
-            background-color="blue"
-            bar-style="light-content"
-        />
-      <text class="footer">Footer</text>
+        background-color="blue"
+        bar-style="light-content"
+      />
     </view>
+    <nb-footer>
+      <nb-footer-tab>
+        <nb-button 
+            :active="tab1" 
+            :onPress="toggleTab1"
+
+        >
+            <nb-icon name="apps" :active="tab1" />
+            <nb-text>Apps</nb-text>
+        </nb-button>
+        
+        <nb-button 
+            :active="tab2" 
+            :onPress="toggleTab2"
+        >
+            <nb-icon name="camera" :active="tab2" />
+            <nb-text>Camera</nb-text>
+        </nb-button>
+        
+        <nb-button 
+            :active="tab3" 
+            :onPress="toggleTab3"
+        >
+            <nb-icon name="compass" :active="tab3" />
+            <nb-text>Compass</nb-text>
+        </nb-button>
+        
+        <nb-button 
+            :active="tab4" 
+            :onPress="toggleTab4"
+        >
+            <nb-icon name="contact" :active="tab4" />
+            <nb-text>Contact</nb-text>
+        </nb-button>
+      </nb-footer-tab>
+    </nb-footer>
   </view>
 </template>
 
@@ -31,10 +65,45 @@ export default {
       type: Object
     },
   },
+  data: function() {
+    return {
+      tab1: true,
+      tab2: false,
+      tab3: false,
+      tab4: false
+    };
+  },
   methods: {
-    handleButton() {
-      this.navigation.navigate("Another");
+    openReservations() {
+      this.navigation.navigate("Reservations");
     },
+    openFoodDrink() {
+      this.navigation.navigate("FoodDrink");
+    },
+    toggleTab1: function() {
+      this.tab1 = true;
+      this.tab2 = false;
+      this.tab3 = false;
+      this.tab4 = false;
+    },
+    toggleTab2: function() {
+      this.tab1 = false;
+      this.tab2 = true;
+      this.tab3 = false;
+      this.tab4 = false;
+    },
+    toggleTab3: function() {
+      this.tab1 = false;
+      this.tab2 = false;
+      this.tab3 = true;
+      this.tab4 = false;
+    },
+    toggleTab4: function() {
+      this.tab1 = false;
+      this.tab2 = false;
+      this.tab3 = false;
+      this.tab4 = true;
+    }
   },
 };
 </script>
