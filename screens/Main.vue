@@ -1,5 +1,6 @@
 <template>
-  <view class="container">
+  <nb-container class="container">
+    <nb-content>
     <image
     :style="{ marginBottom: 20, width: 200, height: 200}"
     :source="{uri: 
@@ -16,6 +17,7 @@
         bar-style="light-content"
       />
     </view>
+    </nb-content>
     <nb-footer>
       <nb-footer-tab>
         <nb-button 
@@ -23,24 +25,24 @@
             :onPress="toggleTab1"
 
         >
-            <nb-icon name="apps" :active="tab1" />
-            <nb-text>Apps</nb-text>
+            <nb-icon name="flag" :active="tab1" />
+            <nb-text>Book</nb-text>
         </nb-button>
         
         <nb-button 
             :active="tab2" 
             :onPress="toggleTab2"
         >
-            <nb-icon name="camera" :active="tab2" />
-            <nb-text>Camera</nb-text>
+            <nb-icon name="pizza" :active="tab2" />
+            <nb-text>Eat</nb-text>
         </nb-button>
         
         <nb-button 
             :active="tab3" 
             :onPress="toggleTab3"
         >
-            <nb-icon name="compass" :active="tab3" />
-            <nb-text>Compass</nb-text>
+            <nb-icon name="beer" :active="tab3" />
+            <nb-text>Drink</nb-text>
         </nb-button>
         
         <nb-button 
@@ -48,11 +50,11 @@
             :onPress="toggleTab4"
         >
             <nb-icon name="contact" :active="tab4" />
-            <nb-text>Contact</nb-text>
+            <nb-text>Account</nb-text>
         </nb-button>
       </nb-footer-tab>
     </nb-footer>
-  </view>
+  </nb-container>
 </template>
 
 <script>
