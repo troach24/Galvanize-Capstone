@@ -5,8 +5,7 @@
     :style="{ marginBottom: 20, width: 200, height: 200}"
     :source="{uri: 
     'https://thumbs.dreamstime.com/b/golf-ball-5400074.jpg'}"/>
-      <!-- :on-press="handleButton" -->
-    <touchable-opacity class="home-button">
+    <touchable-opacity :on-press="handleButton" class="home-button">
       <text class="home-button-text">Tee Times</text>
     </touchable-opacity>
     <touchable-opacity class="home-button">
@@ -23,12 +22,19 @@
 </template>
 
 <script>
+import React from 'react';
+import { Text } from 'react-native';
 
 export default {
+  props: {
+    navigation: {
+      type: Object
+    },
+  },
   methods: {
-    // handleButton() {
-    //   this.navigation.navigate("Another");
-    // },
+    handleButton() {
+      this.navigation.navigate("Another");
+    },
   },
 };
 </script>

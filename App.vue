@@ -6,12 +6,12 @@
 import { StackNavigator } from "vue-native-router";
 import MainScreen from './screens/Main';
 // import IconTextFooterScreen from "./screens/iconTextFooter";
-// import AnotherScreen from './Another';
+import AnotherScreen from './screens/Another';
 
 const AppNavigation = StackNavigator(
   {
     Main: MainScreen,
-    // Another: AnotherScreen,
+    Another: AnotherScreen,
     // IconText: IconTextFooterScreen,
   },
   {
