@@ -1,16 +1,6 @@
 <template>
   <nb-container>
-    <nb-header>
-      <nb-left>
-      </nb-left>
-      <nb-body>
-      <image
-        :style="{ width: 40, height: 40}"
-        :source="{uri: 
-        'https://thumbs.dreamstime.com/b/golf-ball-5400074.jpg'}"/>
-      </nb-body>
-      <nb-right />
-    </nb-header>
+    <Header />
     <nb-content>
     <!-- <image-background :source="launchScreenBg" class="container"> -->
     
@@ -18,9 +8,14 @@
     <touchable-opacity :on-press="openReservations" class="home-button">
       <text class="home-button-text">Book/View Tee Times</text>
     </touchable-opacity>
-    <touchable-opacity :on-press="openFoodDrink" class="home-button">
-      <text class="home-button-text">Place an Order</text>
+    <view>
+    <touchable-opacity :on-press="openEat" class="home-button">
+      <text class="home-button-text">Eat</text>
     </touchable-opacity>
+    <touchable-opacity :on-press="openDrink" class="home-button">
+      <text class="home-button-text">Drink</text>
+    </touchable-opacity>
+    </view>
     </view>
     <!-- <view>
       <status-bar
@@ -37,16 +32,16 @@
           <nb-text>Book</nb-text>
         </nb-button>
         <nb-button :active="tab2" :onPress="toggleTab2">
-            <nb-icon name="pizza" :active="tab2" />
-            <nb-text>Eat</nb-text>
+          <nb-icon name="pizza" :active="tab2" />
+          <nb-text>Eat</nb-text>
         </nb-button>
         <nb-button :active="tab3" :onPress="toggleTab3">
-            <nb-icon name="beer" :active="tab3" />
-            <nb-text>Drink</nb-text>
+          <nb-icon name="beer" :active="tab3" />
+          <nb-text>Drink</nb-text>
         </nb-button>
         <nb-button :active="tab4" :onPress="toggleTab4">
-            <nb-icon name="contact" :active="tab4" />
-            <nb-text>Account</nb-text>
+          <nb-icon name="cash" :active="tab4" />
+          <nb-text>Pay</nb-text>
         </nb-button>
       </nb-footer-tab>
     </nb-footer>
@@ -57,12 +52,16 @@
 import React from 'react';
 import { Text } from 'react-native';
 import launchScreenBg from "../assets/golf-ball.png";
+import Header from '../components/Header';
 
 export default {
   props: {
     navigation: {
       type: Object
     },
+  },
+  components: {
+    Header,
   },
   data: function() {
     return {
@@ -73,16 +72,25 @@ export default {
       tab4: false
     };
   },
+  beforeMount() {
+    this.tab1 = false
+    this.tab2 = false
+    this.tab3 = false
+    this.tab4 = false
+  },
   methods: {
     openReservations() {
-      this.navigation.navigate("Reservations");
+      this.navigation.navigate("Book");
     },
-    openFoodDrink() {
-      this.navigation.navigate("FoodDrink");
+    openEat() {
+      this.navigation.navigate('Eat');
+    },
+    openDrink() {
+      this.navigation.navigate('Drink')
     },
     toggleTab1: function() {
       this.tab1 = true;
-      this.navigation.navigate('Reservations');
+      this.navigation.navigate('Book');
       this.tab2 = false;
       this.tab3 = false;
       this.tab4 = false;
@@ -90,7 +98,7 @@ export default {
     toggleTab2: function() {
       this.tab1 = false;
       this.tab2 = true;
-      this.navigation.navigate("FoodDrink");
+      this.navigation.navigate("Eat");
       this.tab3 = false;
       this.tab4 = false;
     },
@@ -98,6 +106,7 @@ export default {
       this.tab1 = false;
       this.tab2 = false;
       this.tab3 = true;
+      this.navigation.navigate("Drink");
       this.tab4 = false;
     },
     toggleTab4: function() {
@@ -105,6 +114,7 @@ export default {
       this.tab2 = false;
       this.tab3 = false;
       this.tab4 = true;
+      this.navigation.navigate("Pay");
     }
   },
 };

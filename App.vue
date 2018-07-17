@@ -7,8 +7,9 @@ import Vue from "vue-native-core";
 import { StackNavigator } from "vue-native-router";
 import { VueNativeBase } from "native-base";
 import MainScreen from './screens/Main';
-import Reservations from './screens/Reservations';
-import FoodDrink from './screens/FoodDrink';
+import Book from './screens/Book';
+import Eat from './screens/Eat';
+import Drink from './screens/Drink';
 
 // registering all native-base components to the global scope of the Vue
 Vue.use(VueNativeBase);
@@ -17,8 +18,9 @@ Vue.use(VueNativeBase);
 const AppNavigation = StackNavigator(
   {
     Main: MainScreen,
-    Reservations: Reservations,
-    FoodDrink: FoodDrink,
+    Book: Book,
+    Eat: Eat,
+    Drink: Drink,
   },
   {
     initialRouteName: 'Main',
