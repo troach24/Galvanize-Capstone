@@ -1,54 +1,50 @@
 <template>
-  <nb-container class="container">
+  <nb-container>
+    <nb-header>
+      <nb-left>
+      </nb-left>
+      <nb-body>
+      <image
+        :style="{ width: 40, height: 40}"
+        :source="{uri: 
+        'https://thumbs.dreamstime.com/b/golf-ball-5400074.jpg'}"/>
+      </nb-body>
+      <nb-right />
+    </nb-header>
     <nb-content>
-    <image
-    :style="{ marginBottom: 20, width: 200, height: 200}"
-    :source="{uri: 
-    'https://thumbs.dreamstime.com/b/golf-ball-5400074.jpg'}"/>
+    <!-- <image-background :source="launchScreenBg" class="container"> -->
+    
+    <view class="button-container">
     <touchable-opacity :on-press="openReservations" class="home-button">
-      <text class="home-button-text">Tee Times</text>
+      <text class="home-button-text">Book/View Tee Times</text>
     </touchable-opacity>
     <touchable-opacity :on-press="openFoodDrink" class="home-button">
-      <text class="home-button-text">Food &amp; Drink</text>
+      <text class="home-button-text">Place an Order</text>
     </touchable-opacity>
-    <view>
+    </view>
+    <!-- <view>
       <status-bar
         background-color="blue"
         bar-style="light-content"
       />
-    </view>
+    </view> -->
+    <!-- </image-background> -->
     </nb-content>
     <nb-footer>
       <nb-footer-tab>
-        <nb-button 
-            :active="tab1" 
-            :onPress="toggleTab1"
-
-        >
-            <nb-icon name="flag" :active="tab1" />
-            <nb-text>Book</nb-text>
+        <nb-button :active="tab1" :onPress="toggleTab1">
+          <nb-icon name="flag" :active="tab1" />
+          <nb-text>Book</nb-text>
         </nb-button>
-        
-        <nb-button 
-            :active="tab2" 
-            :onPress="toggleTab2"
-        >
+        <nb-button :active="tab2" :onPress="toggleTab2">
             <nb-icon name="pizza" :active="tab2" />
             <nb-text>Eat</nb-text>
         </nb-button>
-        
-        <nb-button 
-            :active="tab3" 
-            :onPress="toggleTab3"
-        >
+        <nb-button :active="tab3" :onPress="toggleTab3">
             <nb-icon name="beer" :active="tab3" />
             <nb-text>Drink</nb-text>
         </nb-button>
-        
-        <nb-button 
-            :active="tab4" 
-            :onPress="toggleTab4"
-        >
+        <nb-button :active="tab4" :onPress="toggleTab4">
             <nb-icon name="contact" :active="tab4" />
             <nb-text>Account</nb-text>
         </nb-button>
@@ -60,6 +56,7 @@
 <script>
 import React from 'react';
 import { Text } from 'react-native';
+import launchScreenBg from "../assets/golf-ball.png";
 
 export default {
   props: {
@@ -69,7 +66,8 @@ export default {
   },
   data: function() {
     return {
-      tab1: true,
+      launchScreenBg: launchScreenBg,
+      tab1: false,
       tab2: false,
       tab3: false,
       tab4: false
@@ -84,6 +82,7 @@ export default {
     },
     toggleTab1: function() {
       this.tab1 = true;
+      this.navigation.navigate('Reservations');
       this.tab2 = false;
       this.tab3 = false;
       this.tab4 = false;
@@ -91,6 +90,7 @@ export default {
     toggleTab2: function() {
       this.tab1 = false;
       this.tab2 = true;
+      this.navigation.navigate("FoodDrink");
       this.tab3 = false;
       this.tab4 = false;
     },
@@ -114,8 +114,16 @@ export default {
 .container {
   background-color: white;
   align-items: center;
-  padding-top: 120;
+  margin-top: 100;
   flex: 1;
+  /* height: 200%; */
+}
+.button-container {
+  /* flex: 1; */
+  /* margin-bottom: 450; */
+  flex: 1;
+  margin-top: 175;
+  align-items: center;
 }
 .home-button {
   width: 210;

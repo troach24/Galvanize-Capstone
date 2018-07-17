@@ -22,6 +22,7 @@ const AppNavigation = StackNavigator(
   },
   {
     initialRouteName: 'Main',
+    headerMode: "none"
   }
 );
 export default {
