@@ -11,7 +11,16 @@
       <nb-right />
     </nb-header>
     <nb-content>
-      <text>BOOK</text>
+      <text>You may schedule a tee time up to 7 days in advance. Select a date below:</text>
+      <nb-card :key="index" v-for="(date, index) in teeTimeDates">
+        <touchable-opacity>
+          <nb-card-item>
+            <nb-body>
+              <nb-text>{{ date }}</nb-text>
+            </nb-body>            
+          </nb-card-item>
+        </touchable-opacity>
+      </nb-card>
     </nb-content>
     <nb-footer>
       <nb-footer-tab>
@@ -25,7 +34,7 @@
         </nb-button>
         <nb-button :active="tab3" :onPress="toggleTab3">
           <nb-icon name="beer" :active="tab3" />
-          <nb-text>Drink</nb-text>
+          <nb-text>Shop</nb-text>
         </nb-button>
         <nb-button :active="tab4" :onPress="toggleTab4">
           <nb-icon name="cash" :active="tab4" />
@@ -37,6 +46,7 @@
 </template>
 
 <script>
+
   export default {
   props: {
     navigation: {
@@ -48,10 +58,23 @@
       tab1: true,
       tab2: false,
       tab3: false,
-      tab4: false
+      tab4: false,
+      teeTimeDates: [
+        'Tomorrow',
+        'Saturday July 28th',
+        'Sunday July 29th',
+        'Monday July 30th',
+        'Tuesday July 31st',
+        'Wednesday August 1st',
+        'Thursday August 2nd',
+        'Friday August 3rd',
+      ],
     };
   },
   methods: {
+    openEat() {
+      this.navigation.navigate('Eat');
+    },
     toggleTab1: function() {
       this.tab1 = true;
       this.navigation.navigate('Book');
@@ -70,7 +93,7 @@
       this.tab1 = false;
       this.tab2 = false;
       this.tab3 = true;
-      this.navigation.navigate("Drink");
+      this.navigation.navigate("Shop");
       this.tab4 = false;
     },
     toggleTab4: function() {

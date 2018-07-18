@@ -13,7 +13,7 @@
       <text class="home-button-text">Eat</text>
     </touchable-opacity>
     <touchable-opacity :on-press="openDrink" class="home-button">
-      <text class="home-button-text">Drink</text>
+      <text class="home-button-text">Shop</text>
     </touchable-opacity>
     </view>
     </view>
@@ -25,26 +25,30 @@
     </view> -->
     <!-- </image-background> -->
     </nb-content>
-    <nb-footer>
+    <!-- <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
           <nb-icon name="flag" :active="tab1" />
           <nb-text>Book</nb-text>
         </nb-button>
         <nb-button :active="tab2" :onPress="toggleTab2">
-          <nb-icon name="pizza" :active="tab2" />
-          <nb-text>Eat</nb-text>
+          <nb-icon name="paper" :active="tab2" />
+          <nb-text>Menu</nb-text>
         </nb-button>
         <nb-button :active="tab3" :onPress="toggleTab3">
-          <nb-icon name="beer" :active="tab3" />
-          <nb-text>Drink</nb-text>
+          <nb-icon name="cart" :active="tab3" />
+          <nb-text>Shop</nb-text>
         </nb-button>
-        <nb-button :active="tab4" :onPress="toggleTab4">
+        <nb-button vertical badge :active="tab4" :onPress="toggleTab4">
+          <nb-badge :style="{backgroundColor: 'green'}">
+            <nb-text>4</nb-text>
+          </nb-badge>
           <nb-icon name="cash" :active="tab4" />
           <nb-text>Pay</nb-text>
         </nb-button>
       </nb-footer-tab>
-    </nb-footer>
+    </nb-footer> -->
+    <Footer :navigation="navigation"/>
   </nb-container>
 </template>
 
@@ -53,6 +57,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import launchScreenBg from "../assets/golf-ball.png";
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default {
   props: {
@@ -62,6 +67,7 @@ export default {
   },
   components: {
     Header,
+    Footer,
   },
   data: function() {
     return {
@@ -72,12 +78,6 @@ export default {
       tab4: false
     };
   },
-  beforeMount() {
-    this.tab1 = false
-    this.tab2 = false
-    this.tab3 = false
-    this.tab4 = false
-  },
   methods: {
     openReservations() {
       this.navigation.navigate("Book");
@@ -86,7 +86,7 @@ export default {
       this.navigation.navigate('Eat');
     },
     openDrink() {
-      this.navigation.navigate('Drink')
+      this.navigation.navigate('Shop')
     },
     toggleTab1: function() {
       this.tab1 = true;
@@ -106,7 +106,7 @@ export default {
       this.tab1 = false;
       this.tab2 = false;
       this.tab3 = true;
-      this.navigation.navigate("Drink");
+      this.navigation.navigate("Shop");
       this.tab4 = false;
     },
     toggleTab4: function() {
@@ -115,7 +115,14 @@ export default {
       this.tab3 = false;
       this.tab4 = true;
       this.navigation.navigate("Pay");
-    }
+    },
+  },
+  beforeMount() {
+    this.tab1 = false
+    this.tab2 = false
+    this.tab3 = false
+    this.tab4 = false
+    
   },
 };
 </script>

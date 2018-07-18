@@ -11,7 +11,7 @@
       <nb-right />
     </nb-header>
   <nb-content>
-    <text>DRINK</text>
+    <text>CHECKOUT</text>
   </nb-content>
     <nb-footer>
       <nb-footer-tab>
@@ -25,7 +25,7 @@
         </nb-button>
         <nb-button :active="tab3" :onPress="toggleTab3">
           <nb-icon name="beer" :active="tab3" />
-          <nb-text>Drink</nb-text>
+          <nb-text>Shop</nb-text>
         </nb-button>
         <nb-button :active="tab4" :onPress="toggleTab4">
           <nb-icon name="cash" :active="tab4" />
@@ -49,8 +49,8 @@
     return {
       tab1: false,
       tab2: false,
-      tab3: true,
-      tab4: false
+      tab3: false,
+      tab4: true
     };
   },
   methods: {
@@ -72,7 +72,7 @@
       this.tab1 = false;
       this.tab2 = false;
       this.tab3 = true;
-      this.navigation.navigate("Drink");
+      this.navigation.navigate("Shop");
       this.tab4 = false;
     },
     toggleTab4: function() {

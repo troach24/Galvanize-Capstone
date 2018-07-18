@@ -10,9 +10,44 @@
       </nb-body>
       <nb-right />
     </nb-header>
-  <nb-content>
-    <text>EAT FOOD</text>
-  </nb-content>
+    <!-- <nb-content>
+      <nb-text :style="{ fontSize: 24 }">Food</nb-text>
+      <nb-card>
+        <nb-card-item button :onPress="handleHeaderClick">
+          <nb-text>🍕 Pizza</nb-text>
+        </nb-card-item>
+        <nb-card-item button :onPress="handleBodyClick">
+          <nb-body>
+            <nb-text>Click on any carditem.</nb-text>
+          </nb-body>            
+        </nb-card-item>
+        <nb-card-item button :onPress="handleFooterClick">
+          <nb-text>GeekyAnts</nb-text>
+        </nb-card-item>
+      </nb-card>
+    </nb-content> -->
+    <nb-content>
+      <nb-list>
+        <nb-list-item itemHeader first>
+          <nb-text>FOOD ITEMS</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick">
+          <nb-text>🍕 Pizza</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick" last>
+          <nb-text>🍔 Burger</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick" last>
+          <nb-text>🌮 Taco Trio</nb-text>
+        </nb-list-item>
+        <nb-list-item itemHeader>
+          <nb-text>DRINKS</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick">
+          <nb-text>Terminator Genesis</nb-text>
+        </nb-list-item>
+      </nb-list>
+    </nb-content>
     <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
@@ -25,7 +60,7 @@
         </nb-button>
         <nb-button :active="tab3" :onPress="toggleTab3">
           <nb-icon name="beer" :active="tab3" />
-          <nb-text>Drink</nb-text>
+          <nb-text>Shop</nb-text>
         </nb-button>
         <nb-button :active="tab4" :onPress="toggleTab4">
           <nb-icon name="cash" :active="tab4" />
@@ -54,6 +89,9 @@
     };
   },
   methods: {
+    handleBodyClick: function() {
+      alert("This is a button ;)");
+    },
     toggleTab1: function() {
       this.tab1 = true;
       this.navigation.navigate('Book');
@@ -72,7 +110,7 @@
       this.tab1 = false;
       this.tab2 = false;
       this.tab3 = true;
-      this.navigation.navigate("Drink");
+      this.navigation.navigate("Shop");
       this.tab4 = false;
     },
     toggleTab4: function() {
@@ -85,3 +123,10 @@
   },
 };
 </script>
+
+<style>
+.menu-item {
+  /* display: flex; */
+  /* justify-content: space-between; */
+}
+</style>

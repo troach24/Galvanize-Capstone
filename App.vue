@@ -9,7 +9,9 @@ import { VueNativeBase } from "native-base";
 import MainScreen from './screens/Main';
 import Book from './screens/Book';
 import Eat from './screens/Eat';
-import Drink from './screens/Drink';
+import Shop from './screens/Shop';
+import Pay from './screens/Pay';
+import Footer from './components/Footer';
 
 // registering all native-base components to the global scope of the Vue
 Vue.use(VueNativeBase);
@@ -20,7 +22,9 @@ const AppNavigation = StackNavigator(
     Main: MainScreen,
     Book: Book,
     Eat: Eat,
-    Drink: Drink,
+    Shop: Shop,
+    Pay: Pay,
+    Footer: Footer,
   },
   {
     initialRouteName: 'Main',
