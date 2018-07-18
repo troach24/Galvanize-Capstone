@@ -48,6 +48,7 @@
         </nb-list-item>
       </nb-list>
     </nb-content>
+    <!-- <Footer :navigation="navigation"/> -->
     <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
@@ -70,15 +71,22 @@
     </nb-footer>
   </nb-container>
 
-
+ 
 </template>
 
 <script>
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
   export default {
   props: {
     navigation: {
       type: Object
     },
+  },
+  components: {
+    Header,
+    Footer,
   },
   data: function() {
     return {

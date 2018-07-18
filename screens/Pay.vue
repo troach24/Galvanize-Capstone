@@ -13,7 +13,8 @@
   <nb-content>
     <text>CHECKOUT</text>
   </nb-content>
-    <nb-footer>
+  <Footer :navigation="navigation"/>
+    <!-- <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
           <nb-icon name="flag" :active="tab1" />
@@ -32,18 +33,25 @@
           <nb-text>Pay</nb-text>
         </nb-button>
       </nb-footer-tab>
-    </nb-footer>
+    </nb-footer> -->
   </nb-container>
 
 
 </template>
 
 <script>
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
   export default {
   props: {
     navigation: {
       type: Object
     },
+  },
+  components: {
+    Header,
+    Footer,
   },
   data: function() {
     return {

@@ -3,10 +3,10 @@
     <nb-left>
     </nb-left>
     <nb-body>
-    <image
-      :style="{ width: 40, height: 40}"
-      :source="{uri: 
-      'http://www.stickpng.com/assets/images/580b585b2edbce24c47b2afd.png'}"/>
+      <image
+        :style="{ width: 40, height: 40}"
+        :source="{uri: 
+        'http://www.stickpng.com/assets/images/580b585b2edbce24c47b2afd.png'}"/>
     </nb-body>
     <nb-right>
       <image
