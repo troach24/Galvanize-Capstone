@@ -2,30 +2,61 @@
   <nb-container>
     <Header />
     <nb-content>
+      <nb-text>Tap on items to add them to your cart</nb-text>
       <nb-list>
         <nb-list-item itemHeader first>
           <nb-text>FOOD ITEMS</nb-text>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick">
-          <nb-text>🍕 Pizza</nb-text>
+          <nb-left>
+            <nb-text>⛳️ Golf Balls</nb-text>
+          </nb-left>
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick" last>
-          <nb-text>🍔 Burger</nb-text>
+          <nb-left>
+            <nb-text>🍔 Burger</nb-text>
+          </nb-left> 
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick" last>
-          <nb-text>🌮 Taco Trio</nb-text>
+          <nb-left>
+            <nb-text>🌮 Taco Trio</nb-text>
+          </nb-left>
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
         <nb-list-item itemHeader>
           <nb-text>DRINKS</nb-text>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick">
-          <nb-text>🍺 Beer</nb-text>
+          <nb-left>
+            <nb-text>🍺 Beer</nb-text>
+          </nb-left>
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick">
-          <nb-text>🍶 Sake</nb-text>
+          <nb-left>
+            <nb-text>🍺 Beer</nb-text>
+          </nb-left>
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick">
-          <nb-text>🍹 Old Fashioned</nb-text>
+          <nb-left>
+            <nb-text>🍺 Beer</nb-text>
+          </nb-left>
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
       </nb-list>
     </nb-content>

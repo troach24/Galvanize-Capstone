@@ -61,7 +61,6 @@ import { Text } from 'react-native';
 import launchScreenBg from "../assets/golf-ball.png";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-// import pushToken from '../pushToken.js';
 // import { log } from 'util';
 
 export default {
@@ -76,7 +75,6 @@ export default {
   },
   data: function() {
     return {
-      launchScreenBg: launchScreenBg,
       tab1: false,
       tab2: false,
       tab3: false,
@@ -86,15 +84,9 @@ export default {
     };
   },
   created: function() {
-    this.registerForPushNotificationsAsync();
-    this._notificationSubscription = Notifications.addListener(
-      this._handleNotification
-    );
+
   },
   methods: {
-    _handleNotification: function(notification) {
-      this.notification = notification;
-    },
     openReservations() {
       this.navigation.navigate("Book");
     },
@@ -141,9 +133,6 @@ export default {
   },
   async mounted() {
 
-    // from pushToken.js
-    // this.token = await pushToken.registerForPushNotificationsAsync()
-    // console.log(this.token);
   },
 };
 </script>

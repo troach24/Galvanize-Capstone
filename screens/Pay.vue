@@ -58,7 +58,7 @@ import Footer from '../components/Footer';
       tab1: false,
       tab2: false,
       tab3: false,
-      tab4: true
+      tab4: true,
     };
   },
   methods: {

@@ -27,35 +27,66 @@
       </nb-card>
     </nb-content> -->
     <nb-content>
+      <nb-text>Tap on items to add them to your cart</nb-text>
       <nb-list>
         <nb-list-item itemHeader first>
           <nb-text>FOOD ITEMS</nb-text>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick">
-          <nb-text>🍕 Pizza</nb-text>
+          <nb-left>
+            <nb-text>🍕 Pizza</nb-text>
+          </nb-left>
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick" last>
-          <nb-text>🍔 Burger</nb-text>
+          <nb-left>
+            <nb-text>🍔 Burger</nb-text>
+          </nb-left> 
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick" last>
-          <nb-text>🌮 Taco Trio</nb-text>
+          <nb-left>
+            <nb-text>🌮 Taco Trio</nb-text>
+          </nb-left>
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
         <nb-list-item itemHeader>
           <nb-text>DRINKS</nb-text>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick">
-          <nb-text>🍺 Beer</nb-text>
+          <nb-left>
+            <nb-text>🍺 Beer</nb-text>
+          </nb-left>
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick">
-          <nb-text>🍶 Sake</nb-text>
+          <nb-left>
+            <nb-text>🍺 Beer</nb-text>
+          </nb-left>
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick">
-          <nb-text>🍹 Old Fashioned</nb-text>
+          <nb-left>
+            <nb-text>🍺 Beer</nb-text>
+          </nb-left>
+          <nb-right>
+            <nb-text>$4.99</nb-text>
+          </nb-right>
         </nb-list-item>
       </nb-list>
     </nb-content>
-    <!-- <Footer :navigation="navigation"/> -->
-    <nb-footer>
+    <Footer :navigation="navigation"/>
+    <!-- <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
           <nb-icon name="flag" :active="tab1" />
@@ -74,7 +105,7 @@
           <nb-text>Pay</nb-text>
         </nb-button>
       </nb-footer-tab>
-    </nb-footer>
+    </nb-footer> -->
   </nb-container>
 
  
@@ -104,7 +135,8 @@ import Footer from '../components/Footer';
   },
   methods: {
     handleBodyClick: function() {
-      alert("This is a button ;)");
+      // This will add the item to the cart page
+      alert("Added *item to cart");
     },
     toggleTab1: function() {
       this.tab1 = true;
