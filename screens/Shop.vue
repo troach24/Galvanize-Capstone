@@ -2,7 +2,32 @@
   <nb-container>
     <Header />
     <nb-content>
-      <text>SHOP</text>
+      <nb-list>
+        <nb-list-item itemHeader first>
+          <nb-text>FOOD ITEMS</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick">
+          <nb-text>🍕 Pizza</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick" last>
+          <nb-text>🍔 Burger</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick" last>
+          <nb-text>🌮 Taco Trio</nb-text>
+        </nb-list-item>
+        <nb-list-item itemHeader>
+          <nb-text>DRINKS</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick">
+          <nb-text>🍺 Beer</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick">
+          <nb-text>🍶 Sake</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick">
+          <nb-text>🍹 Old Fashioned</nb-text>
+        </nb-list-item>
+      </nb-list>
     </nb-content>
     <Footer :navigation="navigation"/>
   </nb-container>
@@ -32,6 +57,9 @@
     };
   },
   methods: {
+    handleBodyClick: function() {
+      alert("This is a button ;)");
+    },
     toggleTab1: function() {
       this.tab1 = true;
       this.navigation.navigate('Book');

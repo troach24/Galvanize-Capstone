@@ -44,7 +44,13 @@
           <nb-text>DRINKS</nb-text>
         </nb-list-item>
         <nb-list-item button :onPress="handleBodyClick">
-          <nb-text>Terminator Genesis</nb-text>
+          <nb-text>🍺 Beer</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick">
+          <nb-text>🍶 Sake</nb-text>
+        </nb-list-item>
+        <nb-list-item button :onPress="handleBodyClick">
+          <nb-text>🍹 Old Fashioned</nb-text>
         </nb-list-item>
       </nb-list>
     </nb-content>
@@ -93,7 +99,7 @@ import Footer from '../components/Footer';
       tab1: false,
       tab2: true,
       tab3: false,
-      tab4: false
+      tab4: false,
     };
   },
   methods: {

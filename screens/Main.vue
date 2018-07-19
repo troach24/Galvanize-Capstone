@@ -16,6 +16,9 @@
       <text class="home-button-text">Shop</text>
     </touchable-opacity>
     </view>
+
+      <text class="text-color-primary">{{JSON.stringify(notification.data)}}</text>
+
     </view>
     <!-- <view>
       <status-bar
@@ -58,6 +61,8 @@ import { Text } from 'react-native';
 import launchScreenBg from "../assets/golf-ball.png";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+// import pushToken from '../pushToken.js';
+// import { log } from 'util';
 
 export default {
   props: {
@@ -75,10 +80,21 @@ export default {
       tab1: false,
       tab2: false,
       tab3: false,
-      tab4: false
+      tab4: false,
+      token: '',
+      notification: {},
     };
   },
+  created: function() {
+    this.registerForPushNotificationsAsync();
+    this._notificationSubscription = Notifications.addListener(
+      this._handleNotification
+    );
+  },
   methods: {
+    _handleNotification: function(notification) {
+      this.notification = notification;
+    },
     openReservations() {
       this.navigation.navigate("Book");
     },
@@ -122,7 +138,12 @@ export default {
     this.tab2 = false
     this.tab3 = false
     this.tab4 = false
-    
+  },
+  async mounted() {
+
+    // from pushToken.js
+    // this.token = await pushToken.registerForPushNotificationsAsync()
+    // console.log(this.token);
   },
 };
 </script>
