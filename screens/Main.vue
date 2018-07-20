@@ -17,7 +17,10 @@
       </view>
     </nb-content> -->
     <nb-content>
-      <nb-h1 :style="{ paddingTop: 25, fontSize: 50, textAlign: 'center' }">Welcome!</nb-h1>
+      <image
+        :style="{ marginTop: 10, marginBottom: 10, alignSelf: 'center', width: 250, height: 50, }"
+        :source="crispy"/>
+      <!-- <nb-h1 :style="{ paddingTop: 20, fontSize: 30, textAlign: 'center', marginBottom: 15 }">@ Crispty Flats</nb-h1> -->
       <image
         :style="{ width: '100%', height: 200}"
         :source="{uri: 'https://www.maderasgolf.com/wp-content/uploads/2017/06/Maderas_slide.jpg'}">
@@ -78,6 +81,7 @@
 import API from "../API.js";
 import React from "react";
 import { Text } from "react-native";
+import crispy from "../assets/crispy-flats.png";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 // import { log } from 'util';
@@ -102,7 +106,8 @@ export default {
       teeTimes: [],
       shopItems: [],
       users: [],
-      notification: {}
+      notification: {},
+      crispy
     };
   },
   created: function() {},

@@ -18,6 +18,11 @@
         </nb-right>
     </nb-list>
   </nb-content>
+  <nb-content>
+    <nb-button :onPress="handleBtnPress" info>
+        <nb-text>Stock Your Cart</nb-text>
+      </nb-button>
+  </nb-content>
   <nb-button :onPress="confirmPayment" full success>
     <nb-text>Confirm Payment</nb-text>
   </nb-button>
@@ -51,6 +56,7 @@
 import API from "../API.js";
 import React from "react";
 import { Toast } from "native-base";
+import { ActionSheet } from "native-base";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -66,18 +72,43 @@ export default {
   },
   data: function() {
     return {
-      tab1: false,
-      tab2: false,
-      tab3: false,
-      tab4: true,
-      cartItems: []
+      cartItems: [],
+      btnOptions: [
+        "Range Bucket $5",
+        "Wooden Tees $1",
+        "Titleist Sleeve $12",
+        "Golf Glove $10",
+        "Cancel"
+      ],
+      optionCancelIndex: 4,
+      optionDestructiveIndex: 4,
+      clicked: 0
     };
   },
   async mounted() {
     this.cartItems = await API.getCartItems();
   },
   methods: {
+    handleBtnPress: function() {
+      console.log("hi");
+      ActionSheet.show(
+        {
+          options: this.btnOptions,
+          cancelButtonIndex: this.optionCancelIndex,
+          destructiveButtonIndex: this.optionDestructiveIndex,
+          title: "Stock your cart"
+        },
+        buttonIndex => {
+          this.clicked = this.btnOptions[buttonIndex];
+          console.log("Yo");
+          // if ((this.clicked = 0)) {
+          //   console.log("yo!");
+          // }
+        }
+      );
+    },
     confirmPayment: function() {
+      console.log("hi");
       this.navigation.navigate("Confirmation");
       Toast.show({
         text: "Success!",
@@ -89,34 +120,6 @@ export default {
         duration: 7000
       });
     }
-    // toggleTab1: function() {
-    //   this.tab1 = true;
-    //   this.navigation.navigate("Book");
-    //   this.tab2 = false;
-    //   this.tab3 = false;
-    //   this.tab4 = false;
-    // },
-    // toggleTab2: function() {
-    //   this.tab1 = false;
-    //   this.tab2 = true;
-    //   this.navigation.navigate("Menu");
-    //   this.tab3 = false;
-    //   this.tab4 = false;
-    // },
-    // toggleTab3: function() {
-    //   this.tab1 = false;
-    //   this.tab2 = false;
-    //   this.tab3 = true;
-    //   this.navigation.navigate("Shop");
-    //   this.tab4 = false;
-    // },
-    // toggleTab4: function() {
-    //   this.tab1 = false;
-    //   this.tab2 = false;
-    //   this.tab3 = false;
-    //   this.tab4 = true;
-    //   this.navigation.navigate("Pay");
-    // }
   }
 };
 </script>

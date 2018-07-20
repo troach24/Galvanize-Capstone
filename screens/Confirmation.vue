@@ -9,9 +9,6 @@
     </view>
     <nb-h3 class="confirmation-instructions">Proceed to cart #4 and show your unique QR code to the attendant.</nb-h3>
   </nb-content>
-
-
-
   <Footer :navigation="navigation"/>
     <!-- <nb-footer>
       <nb-footer-tab>

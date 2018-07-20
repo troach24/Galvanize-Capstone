@@ -3,15 +3,18 @@
     <nb-left>
     </nb-left>
     <nb-body>
-      <image
-        :style="{ width: 40, height: 40}"
-        :source="{uri: 
-        'http://www.stickpng.com/assets/images/580b585b2edbce24c47b2afd.png'}"/>
+      <view>
+        <image
+          :style="{ width: 100, height: 40}"
+          :source="headerImg"
+          />
+
+      </view>
     </nb-body>
     <nb-right>
       <touchable-opacity :onPress="openConfirmation">
         <image
-        :style="{ width: 40, height: 40}"
+        :style="{ width: 50, height: 50, marginBottom: 7 }"
         :source="{uri: 
         'https://render.bitstrips.com/v2/cpanel/8f42bf78-97e6-4e35-8ec5-709ed099f8e9-66f80c2b-7884-414e-8c21-09d720f4a6a3-v1.png?transparent=1&palette=1'}"/>
       </touchable-opacity>
@@ -20,11 +23,17 @@
 </template>
 
 <script>
+import headerImg from "../assets/vc-logo.png";
 export default {
   props: {
     navigation: {
       type: Object
     }
+  },
+  data() {
+    return {
+      headerImg
+    };
   },
   methods: {
     openConfirmation() {
