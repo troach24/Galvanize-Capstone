@@ -1,17 +1,23 @@
 <template>
   <nb-container>
-    <nb-header>
-      <nb-left></nb-left>
-      <nb-body>
-      <image
-        :style="{ width: 40, height: 40}"
-        :source="{uri: 
-        'https://thumbs.dreamstime.com/b/golf-ball-5400074.jpg'}"/>
-      </nb-body>
-      <nb-right />
-    </nb-header>
+    <Header />
   <nb-content>
-    <text>CHECKOUT</text>
+    <nb-text>Review the items below and confirm your purchase</nb-text>
+    <nb-list>
+      <nb-list-item itemHeader first>
+        <!-- <nb-text>TEE TIMES</nb-text> -->
+      </nb-list-item>
+      <nb-list-item :key="index" v-for="(item, index) in cartItems.cartItems">
+        <nb-left>
+          <image
+            :style="{ width: 100, height: 100, marginRight: 10}"
+            :source="{uri: item.imageUrl}"/>
+          <nb-text>{{ item.name }}</nb-text>
+        </nb-left>
+        <nb-right>
+          <nb-text>${{ item.price }}</nb-text>
+        </nb-right>
+    </nb-list>
   </nb-content>
   <Footer :navigation="navigation"/>
     <!-- <nb-footer>
@@ -40,18 +46,19 @@
 </template>
 
 <script>
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import API from "../API.js";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-  export default {
+export default {
   props: {
     navigation: {
       type: Object
-    },
+    }
   },
   components: {
     Header,
-    Footer,
+    Footer
   },
   data: function() {
     return {
@@ -59,12 +66,16 @@ import Footer from '../components/Footer';
       tab2: false,
       tab3: false,
       tab4: true,
+      cartItems: []
     };
+  },
+  async mounted() {
+    this.cartItems = await API.getCartItems();
   },
   methods: {
     toggleTab1: function() {
       this.tab1 = true;
-      this.navigation.navigate('Book');
+      this.navigation.navigate("Book");
       this.tab2 = false;
       this.tab3 = false;
       this.tab4 = false;
@@ -90,6 +101,6 @@ import Footer from '../components/Footer';
       this.tab4 = true;
       this.navigation.navigate("Pay");
     }
-  },
+  }
 };
 </script>

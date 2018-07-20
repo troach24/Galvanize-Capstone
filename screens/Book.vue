@@ -1,15 +1,6 @@
 <template>
   <nb-container>
-    <nb-header>
-      <nb-left></nb-left>
-      <nb-body>
-      <image
-        :style="{ width: 40, height: 40}"
-        :source="{uri: 
-        'https://thumbs.dreamstime.com/b/golf-ball-5400074.jpg'}"/>
-      </nb-body>
-      <nb-right />
-    </nb-header>
+    <Header />
     <nb-content>
       <text>You may schedule a tee time up to 7 days in advance. Select a date below:</text>
       <nb-card :key="index" v-for="(date, index) in teeTimeDates">
@@ -22,7 +13,8 @@
         </touchable-opacity>
       </nb-card>
     </nb-content>
-    <nb-footer>
+    <Footer :navigation="navigation" />
+    <!-- <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
           <nb-icon name="flag" :active="tab1" />
@@ -41,74 +33,43 @@
           <nb-text>Pay</nb-text>
         </nb-button>
       </nb-footer-tab>
-    </nb-footer>
+    </nb-footer> -->
   </nb-container>
 </template>
 
 <script>
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import API from "../API.js";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default {
   props: {
     navigation: {
       type: Object
-    },
+    }
   },
   components: {
     Header,
-    Footer,
+    Footer
   },
   data: function() {
     return {
-      tab1: true,
-      tab2: false,
-      tab3: false,
-      tab4: false,
       teeTimeDates: [
-        'Tomorrow',
-        'Saturday July 28th',
-        'Sunday July 29th',
-        'Monday July 30th',
-        'Tuesday July 31st',
-        'Wednesday August 1st',
-        'Thursday August 2nd',
-        'Friday August 3rd',
-      ],
+        "Tomorrow",
+        "Saturday July 28th",
+        "Sunday July 29th",
+        "Monday July 30th",
+        "Tuesday July 31st",
+        "Wednesday August 1st",
+        "Thursday August 2nd",
+        "Friday August 3rd"
+      ]
     };
   },
   methods: {
     openEat() {
-      this.navigation.navigate('Eat');
-    },
-    toggleTab1: function() {
-      this.tab1 = true;
-      this.navigation.navigate('Book');
-      this.tab2 = false;
-      this.tab3 = false;
-      this.tab4 = false;
-    },
-    toggleTab2: function() {
-      this.tab1 = false;
-      this.tab2 = true;
       this.navigation.navigate("Eat");
-      this.tab3 = false;
-      this.tab4 = false;
-    },
-    toggleTab3: function() {
-      this.tab1 = false;
-      this.tab2 = false;
-      this.tab3 = true;
-      this.navigation.navigate("Shop");
-      this.tab4 = false;
-    },
-    toggleTab4: function() {
-      this.tab1 = false;
-      this.tab2 = false;
-      this.tab3 = false;
-      this.tab4 = true;
-      this.navigation.navigate("Pay");
     }
-  },
+  }
 };
 </script>

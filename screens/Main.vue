@@ -2,31 +2,25 @@
   <nb-container>
     <Header />
     <nb-content>
-    <!-- <image-background :source="launchScreenBg" class="container"> -->
-    
-    <view class="button-container">
-    <touchable-opacity :on-press="openReservations" class="home-button">
-      <text class="home-button-text">Book/View Tee Times</text>
-    </touchable-opacity>
-    <view>
-    <touchable-opacity :on-press="openEat" class="home-button">
-      <text class="home-button-text">Eat</text>
-    </touchable-opacity>
-    <touchable-opacity :on-press="openDrink" class="home-button">
-      <text class="home-button-text">Shop</text>
-    </touchable-opacity>
-    </view>
-
-      <text class="text-color-primary">{{JSON.stringify(notification.data)}}</text>
-
-    </view>
+      <view class="button-container">
+      <touchable-opacity :on-press="openReservations" class="home-button">
+        <text class="home-button-text">Book/View Tee Times</text>
+      </touchable-opacity>
+      <view>
+      <touchable-opacity :on-press="openEat" class="home-button">
+        <text class="home-button-text">Eat</text>
+      </touchable-opacity>
+      <touchable-opacity :on-press="openDrink" class="home-button">
+        <text class="home-button-text">Shop</text>
+      </touchable-opacity>
+      </view>
+      </view>
     <!-- <view>
       <status-bar
         background-color="blue"
         bar-style="light-content"
       />
     </view> -->
-    <!-- </image-background> -->
     </nb-content>
     <!-- <nb-footer>
       <nb-footer-tab>
@@ -56,22 +50,22 @@
 </template>
 
 <script>
-import React from 'react';
-import { Text } from 'react-native';
-import launchScreenBg from "../assets/golf-ball.png";
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import API from "../API.js";
+import React from "react";
+import { Text } from "react-native";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 // import { log } from 'util';
 
 export default {
   props: {
     navigation: {
       type: Object
-    },
+    }
   },
   components: {
     Header,
-    Footer,
+    Footer
   },
   data: function() {
     return {
@@ -79,26 +73,27 @@ export default {
       tab2: false,
       tab3: false,
       tab4: false,
-      token: '',
-      notification: {},
+      token: "",
+      teeTimes: [],
+      shopItems: [],
+      users: [],
+      notification: {}
     };
   },
-  created: function() {
-
-  },
+  created: function() {},
   methods: {
     openReservations() {
       this.navigation.navigate("Book");
     },
     openEat() {
-      this.navigation.navigate('Eat');
+      this.navigation.navigate("Eat");
     },
     openDrink() {
-      this.navigation.navigate('Shop')
+      this.navigation.navigate("Shop");
     },
     toggleTab1: function() {
       this.tab1 = true;
-      this.navigation.navigate('Book');
+      this.navigation.navigate("Book");
       this.tab2 = false;
       this.tab3 = false;
       this.tab4 = false;
@@ -123,17 +118,20 @@ export default {
       this.tab3 = false;
       this.tab4 = true;
       this.navigation.navigate("Pay");
-    },
+    }
   },
   beforeMount() {
-    this.tab1 = false
-    this.tab2 = false
-    this.tab3 = false
-    this.tab4 = false
+    this.tab1 = false;
+    this.tab2 = false;
+    this.tab3 = false;
+    this.tab4 = false;
   },
   async mounted() {
-
-  },
+    this.teeTimes = await API.getTeeTimes();
+    this.menuItems = await API.getMenuItems();
+    this.shopItems = await API.getShopItems();
+    this.users = await API.getUsers();
+  }
 };
 </script>
  

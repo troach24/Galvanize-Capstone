@@ -1,91 +1,28 @@
 <template>
   <nb-container>
-    <nb-header>
-      <nb-left></nb-left>
-      <nb-body>
-      <image
-        :style="{ width: 40, height: 40}"
-        :source="{uri: 
-        'https://thumbs.dreamstime.com/b/golf-ball-5400074.jpg'}"/>
-      </nb-body>
-      <nb-right />
-    </nb-header>
-    <!-- <nb-content>
-      <nb-text :style="{ fontSize: 24 }">Food</nb-text>
-      <nb-card>
-        <nb-card-item button :onPress="handleHeaderClick">
-          <nb-text>🍕 Pizza</nb-text>
-        </nb-card-item>
-        <nb-card-item button :onPress="handleBodyClick">
-          <nb-body>
-            <nb-text>Click on any carditem.</nb-text>
-          </nb-body>            
-        </nb-card-item>
-        <nb-card-item button :onPress="handleFooterClick">
-          <nb-text>GeekyAnts</nb-text>
-        </nb-card-item>
-      </nb-card>
-    </nb-content> -->
+    <Header />
     <nb-content>
       <nb-text>Tap on items to add them to your cart</nb-text>
       <nb-list>
         <nb-list-item itemHeader first>
           <nb-text>FOOD ITEMS</nb-text>
         </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick">
-          <nb-left>
-            <nb-text>🍕 Pizza</nb-text>
-          </nb-left>
-          <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
-        </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick" last>
-          <nb-left>
-            <nb-text>🍔 Burger</nb-text>
-          </nb-left> 
-          <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
-        </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick" last>
-          <nb-left>
-            <nb-text>🌮 Taco Trio</nb-text>
-          </nb-left>
-          <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
-        </nb-list-item>
-        <nb-list-item itemHeader>
-          <nb-text>DRINKS</nb-text>
-        </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick">
-          <nb-left>
-            <nb-text>🍺 Beer</nb-text>
-          </nb-left>
-          <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
-        </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick">
-          <nb-left>
-            <nb-text>🍺 Beer</nb-text>
-          </nb-left>
-          <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
-        </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick">
-          <nb-left>
-            <nb-text>🍺 Beer</nb-text>
-          </nb-left>
-          <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
+        <nb-list-item :key="index" v-for="(item, index) in menuItems.menuItems" button>
+          <touchable-opacity :on-press="() => addToCart(item)">
+            <nb-left>
+              <image
+                :style="{ width: 100, height: 100, marginRight: 10}"
+                :source="{uri: item.imageUrl}"/>
+              <nb-text>{{ item.name }}</nb-text>
+            </nb-left>
+            <nb-right>
+              <nb-text>${{ item.price }}</nb-text>
+            </nb-right>
+          </touchable-opacity>
         </nb-list-item>
       </nb-list>
     </nb-content>
-    <Footer :navigation="navigation"/>
+    <Footer :navigation="navigation"/> 
     <!-- <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
@@ -112,66 +49,75 @@
 </template>
 
 <script>
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import API from "../API.js";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-  export default {
+export default {
   props: {
     navigation: {
       type: Object
-    },
+    }
   },
   components: {
     Header,
-    Footer,
+    Footer
   },
   data: function() {
     return {
-      tab1: false,
-      tab2: true,
-      tab3: false,
-      tab4: false,
+      menuItems: [],
+      cartItem: {}
     };
   },
-  methods: {
-    handleBodyClick: function() {
-      // This will add the item to the cart page
-      alert("Added *item to cart");
-    },
-    toggleTab1: function() {
-      this.tab1 = true;
-      this.navigation.navigate('Book');
-      this.tab2 = false;
-      this.tab3 = false;
-      this.tab4 = false;
-    },
-    toggleTab2: function() {
-      this.tab1 = false;
-      this.tab2 = true;
-      this.navigation.navigate("Eat");
-      this.tab3 = false;
-      this.tab4 = false;
-    },
-    toggleTab3: function() {
-      this.tab1 = false;
-      this.tab2 = false;
-      this.tab3 = true;
-      this.navigation.navigate("Shop");
-      this.tab4 = false;
-    },
-    toggleTab4: function() {
-      this.tab1 = false;
-      this.tab2 = false;
-      this.tab3 = false;
-      this.tab4 = true;
-      this.navigation.navigate("Pay");
-    }
+  async mounted() {
+    this.menuItems = await API.getMenuItems();
+    this.menuItems.menuItems.reverse();
   },
+  methods: {
+    buildCartItem(item) {
+      this.cartItem = {
+        name: item.name,
+        price: item.price,
+        description: item.description,
+        imageUrl: item.imageUrl,
+        quantity: item.quantity
+      };
+      console.log(this.cartItem);
+    },
+    addToCart(item) {
+      this.buildCartItem(item);
+      return fetch(`${API.API_URL}cart`, {
+        method: "POST",
+        body: JSON.stringify(this.cartItem),
+        headers: {
+          "content-type": "application/json",
+          mode: "cors",
+          cache: "default"
+        }
+      });
+      // This will add the item to the cart page
+      // hmmmmmmm..... alert(`Added to cart`);
+    }
+    // postToCart() {
+    //   this.item.quantity_available--;
+    //   return fetch(`${API.API_URL}/cart`, {
+    //     method: 'POST',
+    //     body: JSON.stringify(this.newCartItem),
+    //     headers: {
+    //       'content-type': 'application/json',
+    //       mode: 'cors',
+    //       cache: 'default',
+    //     },
+    //   })
+    //     .then(alert(`1 ${this.item.name} successfully added to shopping cart!`))
+    //     .catch(error => console.error(error));
+    // },
+  }
 };
 </script>
 
 <style>
-.menu-item {
+.purchase-item img {
   /* display: flex; */
   /* justify-content: space-between; */
 }

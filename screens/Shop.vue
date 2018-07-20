@@ -5,57 +5,18 @@
       <nb-text>Tap on items to add them to your cart</nb-text>
       <nb-list>
         <nb-list-item itemHeader first>
-          <nb-text>FOOD ITEMS</nb-text>
+          <nb-text>PRO SHOP ITEMS</nb-text>
         </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick">
+        <nb-list-item :key="index" v-for="(item, index) in shopItems.shopItems"
+        class="purchase-item" button :onPress="handleBodyClick">
           <nb-left>
-            <nb-text>⛳️ Golf Balls</nb-text>
+            <image
+              :style="{ width: 100, height: 100, marginRight: 10}"
+              :source="{uri: item.imageUrl}"/>
+            <nb-text>{{ item.name }}</nb-text>
           </nb-left>
           <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
-        </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick" last>
-          <nb-left>
-            <nb-text>🍔 Burger</nb-text>
-          </nb-left> 
-          <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
-        </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick" last>
-          <nb-left>
-            <nb-text>🌮 Taco Trio</nb-text>
-          </nb-left>
-          <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
-        </nb-list-item>
-        <nb-list-item itemHeader>
-          <nb-text>DRINKS</nb-text>
-        </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick">
-          <nb-left>
-            <nb-text>🍺 Beer</nb-text>
-          </nb-left>
-          <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
-        </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick">
-          <nb-left>
-            <nb-text>🍺 Beer</nb-text>
-          </nb-left>
-          <nb-right>
-            <nb-text>$4.99</nb-text>
-          </nb-right>
-        </nb-list-item>
-        <nb-list-item button :onPress="handleBodyClick">
-          <nb-left>
-            <nb-text>🍺 Beer</nb-text>
-          </nb-left>
-          <nb-right>
-            <nb-text>$4.99</nb-text>
+            <nb-text>${{ item.price }}</nb-text>
           </nb-right>
         </nb-list-item>
       </nb-list>
@@ -66,59 +27,32 @@
 </template>
 
 <script>
-  import Header from '../components/Header';
-  import Footer from '../components/Footer';
-  
-  export default {
+import API from "../API.js";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+export default {
   props: {
     navigation: {
       type: Object
-    },
+    }
   },
   components: {
     Header,
-    Footer,
+    Footer
   },
   data: function() {
     return {
-      tab1: false,
-      tab2: false,
-      tab3: true,
-      tab4: false
+      shopItems: []
     };
+  },
+  async mounted() {
+    this.shopItems = await API.getShopItems();
   },
   methods: {
     handleBodyClick: function() {
       alert("This is a button ;)");
-    },
-    toggleTab1: function() {
-      this.tab1 = true;
-      this.navigation.navigate('Book');
-      this.tab2 = false;
-      this.tab3 = false;
-      this.tab4 = false;
-    },
-    toggleTab2: function() {
-      this.tab1 = false;
-      this.tab2 = true;
-      this.navigation.navigate("Eat");
-      this.tab3 = false;
-      this.tab4 = false;
-    },
-    toggleTab3: function() {
-      this.tab1 = false;
-      this.tab2 = false;
-      this.tab3 = true;
-      this.navigation.navigate("Shop");
-      this.tab4 = false;
-    },
-    toggleTab4: function() {
-      this.tab1 = false;
-      this.tab2 = false;
-      this.tab3 = false;
-      this.tab4 = true;
-      this.navigation.navigate("Pay");
     }
-  },
+  }
 };
 </script>
