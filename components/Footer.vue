@@ -53,7 +53,7 @@ export default {
       this.navigation.navigate("Book");
     },
     openEat() {
-      this.navigation.navigate("Eat");
+      this.navigation.navigate("Menu");
     },
     openDrink() {
       this.navigation.navigate("Shop");
@@ -68,7 +68,7 @@ export default {
     toggleTab2: function() {
       this.tab1 = false;
       this.tab2 = true;
-      this.navigation.navigate("Eat");
+      this.navigation.navigate("Menu");
       this.tab3 = false;
       this.tab4 = false;
     },

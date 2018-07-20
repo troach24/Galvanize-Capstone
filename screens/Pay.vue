@@ -1,11 +1,10 @@
 <template>
   <nb-container>
-    <Header />
+    <Header :navigation="navigation"/>
   <nb-content>
     <nb-text>Review the items below and confirm your purchase</nb-text>
     <nb-list>
       <nb-list-item itemHeader first>
-        <!-- <nb-text>TEE TIMES</nb-text> -->
       </nb-list-item>
       <nb-list-item :key="index" v-for="(item, index) in cartItems.cartItems">
         <nb-left>
@@ -19,6 +18,9 @@
         </nb-right>
     </nb-list>
   </nb-content>
+  <nb-button :onPress="confirmPayment" full success>
+    <nb-text>Confirm Payment</nb-text>
+  </nb-button>
   <Footer :navigation="navigation"/>
     <!-- <nb-footer>
       <nb-footer-tab>
@@ -28,7 +30,7 @@
         </nb-button>
         <nb-button :active="tab2" :onPress="toggleTab2">
           <nb-icon name="pizza" :active="tab2" />
-          <nb-text>Eat</nb-text>
+          <nb-text>Menu</nb-text>
         </nb-button>
         <nb-button :active="tab3" :onPress="toggleTab3">
           <nb-icon name="beer" :active="tab3" />
@@ -47,6 +49,8 @@
 
 <script>
 import API from "../API.js";
+import React from "react";
+import { Toast } from "native-base";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -73,34 +77,50 @@ export default {
     this.cartItems = await API.getCartItems();
   },
   methods: {
-    toggleTab1: function() {
-      this.tab1 = true;
-      this.navigation.navigate("Book");
-      this.tab2 = false;
-      this.tab3 = false;
-      this.tab4 = false;
-    },
-    toggleTab2: function() {
-      this.tab1 = false;
-      this.tab2 = true;
-      this.navigation.navigate("Eat");
-      this.tab3 = false;
-      this.tab4 = false;
-    },
-    toggleTab3: function() {
-      this.tab1 = false;
-      this.tab2 = false;
-      this.tab3 = true;
-      this.navigation.navigate("Shop");
-      this.tab4 = false;
-    },
-    toggleTab4: function() {
-      this.tab1 = false;
-      this.tab2 = false;
-      this.tab3 = false;
-      this.tab4 = true;
-      this.navigation.navigate("Pay");
+    confirmPayment: function() {
+      this.navigation.navigate("Confirmation");
+      Toast.show({
+        text: "Success!",
+        // buttonText: "Okay",
+        buttonTextStyle: { color: "white" },
+        buttonStyle: { backgroundColor: "#5cb85c" },
+        type: "success",
+        position: "bottom",
+        duration: 7000
+      });
     }
+    // toggleTab1: function() {
+    //   this.tab1 = true;
+    //   this.navigation.navigate("Book");
+    //   this.tab2 = false;
+    //   this.tab3 = false;
+    //   this.tab4 = false;
+    // },
+    // toggleTab2: function() {
+    //   this.tab1 = false;
+    //   this.tab2 = true;
+    //   this.navigation.navigate("Menu");
+    //   this.tab3 = false;
+    //   this.tab4 = false;
+    // },
+    // toggleTab3: function() {
+    //   this.tab1 = false;
+    //   this.tab2 = false;
+    //   this.tab3 = true;
+    //   this.navigation.navigate("Shop");
+    //   this.tab4 = false;
+    // },
+    // toggleTab4: function() {
+    //   this.tab1 = false;
+    //   this.tab2 = false;
+    //   this.tab3 = false;
+    //   this.tab4 = true;
+    //   this.navigation.navigate("Pay");
+    // }
   }
 };
 </script>
+
+<style scoped>
+</style>
+

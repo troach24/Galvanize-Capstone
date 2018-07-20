@@ -1,27 +1,52 @@
 <template>
   <nb-container>
-    <Header />
-    <nb-content>
+    <Header :navigation="navigation"/>
+    <!-- <nb-content>
       <view class="button-container">
       <touchable-opacity :on-press="openReservations" class="home-button">
         <text class="home-button-text">Book/View Tee Times</text>
       </touchable-opacity>
       <view>
       <touchable-opacity :on-press="openEat" class="home-button">
-        <text class="home-button-text">Eat</text>
+        <text class="home-button-text">Menu</text>
       </touchable-opacity>
-      <touchable-opacity :on-press="openDrink" class="home-button">
+      <touchable-opacity :on-press="openPay" class="home-button">
         <text class="home-button-text">Shop</text>
       </touchable-opacity>
       </view>
       </view>
-    <!-- <view>
-      <status-bar
-        background-color="blue"
-        bar-style="light-content"
-      />
-    </view> -->
+    </nb-content> -->
+    <nb-content>
+      <nb-h1 :style="{ paddingTop: 25, fontSize: 50, textAlign: 'center' }">Welcome!</nb-h1>
+      <image
+        :style="{ width: '100%', height: 200}"
+        :source="{uri: 'https://www.maderasgolf.com/wp-content/uploads/2017/06/Maderas_slide.jpg'}">
     </nb-content>
+    <nb-content>
+      <nb-button :on-press="openPay" iconLeft class="pad" full>
+        <nb-text>Check In</nb-text>
+      </nb-button>
+      <nb-button :on-press="openReservations" class="pad" full>
+        <nb-text>Book A New Tee Time</nb-text>
+      </nb-button>
+      <nb-button :on-press="openMenu" class="pad" full>
+        <nb-text>Order Food &amp; Drinks</nb-text>
+      </nb-button>
+      <nb-button :on-press="openShop" class="pad" full>
+        <nb-text>Shop Pro Shop</nb-text>
+      </nb-button>
+    </nb-content>
+    <!-- <nb-content> -->
+    <!-- <nb-button full success>
+      <nb-text>TEST</nb-text>
+    </nb-button>
+    <nb-button full success>
+      <nb-text>TEST</nb-text>
+    </nb-button>
+    <nb-button full success>
+      <nb-text>TEST</nb-text>
+    </nb-button> -->
+    <!-- </nb-content> -->
     <!-- <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
@@ -85,11 +110,14 @@ export default {
     openReservations() {
       this.navigation.navigate("Book");
     },
-    openEat() {
-      this.navigation.navigate("Eat");
+    openMenu() {
+      this.navigation.navigate("Menu");
     },
-    openDrink() {
+    openShop() {
       this.navigation.navigate("Shop");
+    },
+    openPay() {
+      this.navigation.navigate("Pay");
     },
     toggleTab1: function() {
       this.tab1 = true;
@@ -101,7 +129,7 @@ export default {
     toggleTab2: function() {
       this.tab1 = false;
       this.tab2 = true;
-      this.navigation.navigate("Eat");
+      this.navigation.navigate("Menu");
       this.tab3 = false;
       this.tab4 = false;
     },
@@ -161,5 +189,9 @@ export default {
   text-align: center;
   font-size: 34;
   color: white;
+}
+.pad {
+  margin-top: 10;
+  margin-bottom: 10;
 }
 </style>

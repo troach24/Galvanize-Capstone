@@ -1,6 +1,6 @@
 <template>
   <nb-container>
-    <Header />
+    <Header :navigation="navigation"/>
     <nb-content>
       <nb-text>Tap on items to add them to your cart</nb-text>
       <nb-list>

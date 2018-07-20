@@ -1,19 +1,18 @@
 <template>
   <nb-container>
     <Header :navigation="navigation"/>
-    <nb-content>
-      <text>You may schedule a tee time up to 7 days in advance. Select a date below:</text>
-      <nb-card :key="index" v-for="(date, index) in teeTimeDates">
-        <touchable-opacity>
-          <nb-card-item>
-            <nb-body>
-              <nb-text>{{ date }}</nb-text>
-            </nb-body>            
-          </nb-card-item>
-        </touchable-opacity>
-      </nb-card>
-    </nb-content>
-    <Footer :navigation="navigation" />
+  <nb-content>
+    <view>
+      <image
+        :style="{ marginTop: 30, alignSelf: 'center', width: 300, height: 300}"
+        :source="{uri: 'https://qrcode.tec-it.com/API/QRCode?data=http%3A%2F%2Fwww.twitter.com%2F%255b%255b%255bTECIT%252f%252f%252fTwitter%255d%255d%255d'}">
+    </view>
+    <nb-h3 class="confirmation-instructions">Proceed to cart #4 and show your unique QR code to the attendant.</nb-h3>
+  </nb-content>
+
+
+
+  <Footer :navigation="navigation"/>
     <!-- <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
@@ -35,6 +34,8 @@
       </nb-footer-tab>
     </nb-footer> -->
   </nb-container>
+
+
 </template>
 
 <script>
@@ -51,25 +52,15 @@ export default {
   components: {
     Header,
     Footer
-  },
-  data: function() {
-    return {
-      teeTimeDates: [
-        "Tomorrow",
-        "Saturday July 28th",
-        "Sunday July 29th",
-        "Monday July 30th",
-        "Tuesday July 31st",
-        "Wednesday August 1st",
-        "Thursday August 2nd",
-        "Friday August 3rd"
-      ]
-    };
-  },
-  methods: {
-    openEat() {
-      this.navigation.navigate("Menu");
-    }
   }
 };
 </script>
+
+<style>
+.confirmation-instructions {
+  margin-top: 20;
+  margin-left: 20;
+  margin-right: 20;
+}
+</style>
+

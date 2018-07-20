@@ -1,6 +1,6 @@
 <template>
   <nb-container>
-    <Header />
+    <Header :navigation="navigation"/>
     <nb-content>
       <nb-text>Tap on items to add them to your cart</nb-text>
       <nb-list>
@@ -31,7 +31,7 @@
         </nb-button>
         <nb-button :active="tab2" :onPress="toggleTab2">
           <nb-icon name="pizza" :active="tab2" />
-          <nb-text>Eat</nb-text>
+          <nb-text>Menu</nb-text>
         </nb-button>
         <nb-button :active="tab3" :onPress="toggleTab3">
           <nb-icon name="beer" :active="tab3" />
