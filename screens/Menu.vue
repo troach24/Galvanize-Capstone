@@ -82,7 +82,6 @@ export default {
         imageUrl: item.imageUrl,
         quantity: item.quantity
       };
-      console.log(this.cartItem);
     },
     addToCart(item) {
       this.buildCartItem(item);
@@ -98,20 +97,6 @@ export default {
       // This will add the item to the cart page
       // hmmmmmmm..... alert(`Added to cart`);
     }
-    // postToCart() {
-    //   this.item.quantity_available--;
-    //   return fetch(`${API.API_URL}/cart`, {
-    //     method: 'POST',
-    //     body: JSON.stringify(this.newCartItem),
-    //     headers: {
-    //       'content-type': 'application/json',
-    //       mode: 'cors',
-    //       cache: 'default',
-    //     },
-    //   })
-    //     .then(alert(`1 ${this.item.name} successfully added to shopping cart!`))
-    //     .catch(error => console.error(error));
-    // },
   }
 };
 </script>

@@ -18,38 +18,26 @@
     </nb-content> -->
     <nb-content>
       <image
-        :style="{ marginTop: 10, marginBottom: 10, alignSelf: 'center', width: 250, height: 50, }"
+        :style="{ marginTop: 50, marginBottom: 10, alignSelf: 'center', width: 250, height: 50, }"
         :source="crispy"/>
-      <!-- <nb-h1 :style="{ paddingTop: 20, fontSize: 30, textAlign: 'center', marginBottom: 15 }">@ Crispty Flats</nb-h1> -->
       <image
         :style="{ width: '100%', height: 200}"
         :source="{uri: 'https://www.maderasgolf.com/wp-content/uploads/2017/06/Maderas_slide.jpg'}">
     </nb-content>
-    <nb-content>
-      <nb-button :on-press="openPay" iconLeft class="pad" full>
+    <nb-content class="button-container">
+      <nb-button :on-press="openPay" iconLeft class="home-button" full>
         <nb-text>Check In</nb-text>
       </nb-button>
-      <nb-button :on-press="openReservations" class="pad" full>
+      <nb-button :on-press="openReservations" class="home-button" full>
         <nb-text>Book A New Tee Time</nb-text>
       </nb-button>
-      <nb-button :on-press="openMenu" class="pad" full>
+      <nb-button :on-press="openMenu" class="home-button" full>
         <nb-text>Order Food &amp; Drinks</nb-text>
       </nb-button>
-      <nb-button :on-press="openShop" class="pad" full>
+      <nb-button :on-press="openShop" class="home-button" full>
         <nb-text>Shop Pro Shop</nb-text>
       </nb-button>
     </nb-content>
-    <!-- <nb-content> -->
-    <!-- <nb-button full success>
-      <nb-text>TEST</nb-text>
-    </nb-button>
-    <nb-button full success>
-      <nb-text>TEST</nb-text>
-    </nb-button>
-    <nb-button full success>
-      <nb-text>TEST</nb-text>
-    </nb-button> -->
-    <!-- </nb-content> -->
     <!-- <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
@@ -169,34 +157,14 @@ export default {
 </script>
  
 <style>
-.container {
-  background-color: white;
-  align-items: center;
-  margin-top: 100;
-  flex: 1;
-  /* height: 200%; */
-}
 .button-container {
-  /* flex: 1; */
-  /* margin-bottom: 450; */
-  flex: 1;
-  margin-top: 175;
-  align-items: center;
+  margin-top: 20;
 }
 .home-button {
-  width: 210;
-  background-color: green;
-  margin-bottom: 10;
-  padding: 10;
-  border-radius: 5;
-}
-.home-button-text {
-  text-align: center;
-  font-size: 34;
-  color: white;
-}
-.pad {
-  margin-top: 10;
-  margin-bottom: 10;
+  margin-top: 5;
+  margin-bottom: 5;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
 </style>
