@@ -7,8 +7,10 @@
         <nb-list-item itemHeader first>
           <nb-text>FOOD ITEMS</nb-text>
         </nb-list-item>
-        <nb-list-item :key="index" v-for="(item, index) in menuItems.menuItems" button>
-          <touchable-opacity :on-press="() => addToCart(item)">
+        <nb-list-item
+        :on-press="() => addToCart(item)"
+        :key="index" v-for="(item, index) in menuItems.menuItems" button>
+
             <nb-left>
               <image
                 :style="{ width: 100, height: 100, marginRight: 10}"
@@ -18,7 +20,7 @@
             <nb-right>
               <nb-text>${{ item.price }}</nb-text>
             </nb-right>
-          </touchable-opacity>
+
         </nb-list-item>
       </nb-list>
     </nb-content>
@@ -100,10 +102,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.purchase-item img {
-  /* display: flex; */
-  /* justify-content: space-between; */
-}
-</style>

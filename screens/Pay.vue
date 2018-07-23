@@ -3,27 +3,21 @@
     <Header :navigation="navigation"/>
   <nb-content>
     <nb-text>Review the items below and confirm your purchase</nb-text>
-    <nb-button
-      :style="{ marginLeft: 'auto', marginRight: 'auto', width: '80%', alignSelf: 'center' }"
-      :onPress="handleBtnPress" full>
-      <nb-text>Stock Your Cart</nb-text>
-    </nb-button>
     <nb-list>
-      <!-- <nb-list-item itemHeader first>
-      </nb-list-item> -->
-      <nb-list-item :key="index" v-for="(item, index) in cartItems.cartItems">
-        <nb-left>
-          <image
-            :style="{ width: 100, height: 100, marginRight: 10}"
-            :source="{uri: item.imageUrl}"/>
-          <nb-text>{{ item.name }}</nb-text>
-        </nb-left>
-        <nb-right>
-          <nb-text>${{ item.price }}</nb-text>
-        </nb-right>
+      <CartItem
+      :key="index"
+      v-for="(item, index) in cartItems.cartItems"
+      :cartItems="cartItems"
+      v-model="this.cartItems"
+      :item="item">
     </nb-list>
   </nb-content>
-  <nb-button :onPress="confirmPayment" full success>
+    <nb-button
+      class="pay-screen-golf"
+      :onPress="() => handleBtnPress()" full>
+      <nb-text>Stock Your Cart</nb-text>
+    </nb-button>
+  <nb-button class="pay-screen-golf" :onPress="confirmPayment" full success>
     <nb-text>Confirm Payment</nb-text>
   </nb-button>
   <Footer :navigation="navigation"/>
@@ -58,6 +52,7 @@ import React from "react";
 import { Toast } from "native-base";
 import { ActionSheet } from "native-base";
 import Header from "../components/Header";
+import CartItem from "../components/CartItem";
 import Footer from "../components/Footer";
 
 export default {
@@ -68,6 +63,7 @@ export default {
   },
   components: {
     Header,
+    CartItem,
     Footer
   },
   data: function() {
@@ -126,7 +122,7 @@ export default {
   },
   methods: {
     addToCart(item) {
-      console.log(item);
+      console.log("item: ", item);
       return fetch(`${API.API_URL}cart`, {
         method: "POST",
         body: JSON.stringify(item),
@@ -135,7 +131,9 @@ export default {
           mode: "cors",
           cache: "default"
         }
-      });
+      }).then((this.cartItems = API.getCartItems()));
+      // need two fetch reqs for some reason...^^^
+
       // render/update cart 'icon' quantity on POST
       // toast popup to confirm?
     },
@@ -147,9 +145,8 @@ export default {
           destructiveButtonIndex: this.optionDestructiveIndex,
           title: "Stock your cart"
         },
-        buttonIndex => {
+        async buttonIndex => {
           this.clicked = this.btnOptions[buttonIndex];
-          console.log(buttonIndex);
           if (buttonIndex === 0) {
             this.addToCart(this.rangeBucket);
           } else if (buttonIndex === 1) {
@@ -159,10 +156,12 @@ export default {
           } else if (buttonIndex === 3) {
             this.addToCart(this.glove);
           }
+          // need two fetch reqs for some reason...
+          this.cartItems = await API.getCartItems();
         }
       );
     },
-    confirmPayment: function() {
+    confirmPayment() {
       this.navigation.navigate("Confirmation");
       Toast.show({
         text: "Success!",
@@ -179,5 +178,12 @@ export default {
 </script>
 
 <style scoped>
+.pay-screen-golf {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  align-self: center;
+  margin-top: 10;
+}
 </style>
 
