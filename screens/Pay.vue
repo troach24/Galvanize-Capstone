@@ -12,7 +12,7 @@
       :item="item">
     </nb-list>
   </nb-content>
-  <nb-text :style="{ alignSelf: 'flex-end', fontWeight: 'bold', marginRight: 20 }">Total: ${{ total }}</nb-text>
+  <nb-text :style="{ alignSelf: 'flex-end', fontWeight: 'bold', marginRight: 20 }">Total: ${{ total.toFixed(2) }}</nb-text>
   <nb-button class="pay-screen-golf" :onPress="confirmPayment" full success>
     <nb-text :receipt="receipt">Confirm Payment</nb-text>
   </nb-button>

@@ -16,7 +16,7 @@
         <nb-text>{{ item.name }}</nb-text>
         <nb-text>Qty: {{ item.quantity }}</nb-text>
       </nb-list-item>
-      <nb-text :style="{ alignSelf: 'flex-end', fontWeight: 'bold', marginRight: 15 }">Total: ${{ total }}</nb-text>
+      <nb-text :style="{ alignSelf: 'flex-end', fontWeight: 'bold', marginRight: 15 }">Total: ${{ total.toFixed(2) }}</nb-text>
     </nb-list>
   </nb-content>
   <Footer :navigation="navigation"/>

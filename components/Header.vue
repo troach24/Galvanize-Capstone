@@ -1,12 +1,12 @@
 <template>
-  <nb-header>
+  <nb-header :style="{ marginBottom: 1 }">
     <nb-left>
       <nb-icon name="home" :style="{ marginLeft: 10 }" :onPress='goHome' />
     </nb-left>
     <nb-body>
       <view>
         <image
-          :style="{ width: 100, height: 40}"
+          :style="{ width: 100, height: 40 }"
           :source="headerImg"
         />
       </view>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import headerImg from "../assets/vc-logo.png";
+import headerImg from "../assets/pepe.png";
 export default {
   props: {
     navigation: {
@@ -45,6 +45,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

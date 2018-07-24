@@ -72,7 +72,6 @@ import { Text } from "react-native";
 import crispy from "../assets/crispy-flats.png";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-// import { log } from 'util';
 
 export default {
   props: {
