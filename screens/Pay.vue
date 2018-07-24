@@ -2,7 +2,7 @@
   <nb-container>
     <Header :navigation="navigation"/>
   <nb-content>
-    <nb-text>Review the items below and confirm your purchase</nb-text>
+    <nb-text>Review the items below then confirm your purchase.</nb-text>
     <nb-list>
       <CartItem
       :key="index"
@@ -12,11 +12,12 @@
       :item="item">
     </nb-list>
   </nb-content>
-    <nb-button
+    <!-- <nb-button
       class="pay-screen-golf"
       :onPress="() => handleBtnPress()" full>
       <nb-text>Stock Your Cart</nb-text>
-    </nb-button>
+    </nb-button> -->
+  <nb-text :style="{ alignSelf: 'flex-end', fontWeight: 'bold', marginRight: 20 }">Total: ${{ total }}</nb-text>
   <nb-button class="pay-screen-golf" :onPress="confirmPayment" full success>
     <nb-text>Confirm Payment</nb-text>
   </nb-button>
@@ -71,56 +72,23 @@ export default {
       menuItems: [],
       shopItems: [],
       cartItems: [],
-      rangeBucket: {
-        name: "Range Balls",
-        price: 5,
-        description: "",
-        imageUrl:
-          "https://www.richmondforestgolf.com/images/bucket-of-balls.png",
-        quantity: 1
-      },
-      tees: {
-        name: "Tees",
-        price: 1,
-        description: "",
-        imageUrl:
-          "https://www.gpencil.com/Merchant2/graphics/00000001/3498.jpg",
-        quantity: 1
-      },
-      golfBalls: {
-        name: "Golf Balls",
-        price: 2.99,
-        description: "",
-        imageUrl:
-          "http://www.discountgolfworld.com/content/callaway/hex-chrome-plus-golfball-white-sleeve.jpg",
-        quantity: 1
-      },
-      glove: {
-        name: "Glove",
-        price: 12.99,
-        description: "",
-        imageUrl:
-          "https://s7d2.scene7.com/is/image/dkscdn/SS14TM14BURNERGLOV_White_is/",
-        quantity: 1
-      },
-      btnOptions: [
-        "Range Bucket $5",
-        "Wooden Tees $1",
-        "Titleist Sleeve $12",
-        "Golf Glove $10",
-        "Cancel"
-      ],
-      optionCancelIndex: 4,
-      optionDestructiveIndex: 4,
-      clicked: 0
+      total: 0
     };
   },
   async mounted() {
     this.cartItems = await API.getCartItems();
     this.menuItems = await API.getMenuItems();
     this.shopItems = await API.getShopItems();
+    this.getTotal();
   },
   methods: {
+    getTotal() {
+      var result = 0;
+      this.cartItems.cartItems.forEach(item => {
+        result += item.price;
+      });
+      this.total = result;
+    },
     addToCart(item) {
       console.log("item: ", item);
       return fetch(`${API.API_URL}cart`, {
@@ -137,32 +105,9 @@ export default {
       // render/update cart 'icon' quantity on POST
       // toast popup to confirm?
     },
-    handleBtnPress: function() {
-      ActionSheet.show(
-        {
-          options: this.btnOptions,
-          cancelButtonIndex: this.optionCancelIndex,
-          destructiveButtonIndex: this.optionDestructiveIndex,
-          title: "Stock your cart"
-        },
-        async buttonIndex => {
-          this.clicked = this.btnOptions[buttonIndex];
-          if (buttonIndex === 0) {
-            this.addToCart(this.rangeBucket);
-          } else if (buttonIndex === 1) {
-            this.addToCart(this.tees);
-          } else if (buttonIndex === 2) {
-            this.addToCart(this.golfBalls);
-          } else if (buttonIndex === 3) {
-            this.addToCart(this.glove);
-          }
-          // need two fetch reqs for some reason...
-          this.cartItems = await API.getCartItems();
-        }
-      );
-    },
     confirmPayment() {
       this.navigation.navigate("Confirmation");
+      // empty
       Toast.show({
         text: "Success!",
         // buttonText: "Okay",

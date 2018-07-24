@@ -1,14 +1,14 @@
 <template>
   <nb-header>
     <nb-left>
+      <nb-icon name="home" :style="{ marginLeft: 10 }" :onPress='goHome' />
     </nb-left>
     <nb-body>
       <view>
         <image
           :style="{ width: 100, height: 40}"
           :source="headerImg"
-          />
-
+        />
       </view>
     </nb-body>
     <nb-right>
@@ -38,6 +38,9 @@ export default {
   methods: {
     openConfirmation() {
       this.navigation.navigate("Confirmation");
+    },
+    goHome() {
+      this.navigation.navigate("Main");
     }
   }
 };

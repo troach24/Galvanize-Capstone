@@ -25,7 +25,7 @@
         :source="{uri: 'https://www.maderasgolf.com/wp-content/uploads/2017/06/Maderas_slide.jpg'}">
     </nb-content>
     <nb-content class="button-container">
-      <nb-button :on-press="openPay" iconLeft class="home-button" full>
+      <nb-button :on-press="openCheckIn" iconLeft class="home-button" full>
         <nb-text>Check In</nb-text>
       </nb-button>
       <nb-button :on-press="openReservations" class="home-button" full>
@@ -86,10 +86,10 @@ export default {
   },
   data: function() {
     return {
-      tab1: false,
-      tab2: false,
-      tab3: false,
-      tab4: false,
+      // tab1: false,
+      // tab2: false,
+      // tab3: false,
+      // tab4: false,
       token: "",
       teeTimes: [],
       shopItems: [],
@@ -109,37 +109,37 @@ export default {
     openShop() {
       this.navigation.navigate("Shop");
     },
-    openPay() {
-      this.navigation.navigate("Pay");
-    },
-    toggleTab1: function() {
-      this.tab1 = true;
-      this.navigation.navigate("Book");
-      this.tab2 = false;
-      this.tab3 = false;
-      this.tab4 = false;
-    },
-    toggleTab2: function() {
-      this.tab1 = false;
-      this.tab2 = true;
-      this.navigation.navigate("Menu");
-      this.tab3 = false;
-      this.tab4 = false;
-    },
-    toggleTab3: function() {
-      this.tab1 = false;
-      this.tab2 = false;
-      this.tab3 = true;
-      this.navigation.navigate("Shop");
-      this.tab4 = false;
-    },
-    toggleTab4: function() {
-      this.tab1 = false;
-      this.tab2 = false;
-      this.tab3 = false;
-      this.tab4 = true;
-      this.navigation.navigate("Pay");
+    openCheckIn() {
+      this.navigation.navigate("CheckIn");
     }
+    // toggleTab1: function() {
+    //   this.tab1 = true;
+    //   this.navigation.navigate("Book");
+    //   this.tab2 = false;
+    //   this.tab3 = false;
+    //   this.tab4 = false;
+    // },
+    // toggleTab2: function() {
+    //   this.tab1 = false;
+    //   this.tab2 = true;
+    //   this.navigation.navigate("Menu");
+    //   this.tab3 = false;
+    //   this.tab4 = false;
+    // },
+    // toggleTab3: function() {
+    //   this.tab1 = false;
+    //   this.tab2 = false;
+    //   this.tab3 = true;
+    //   this.navigation.navigate("Shop");
+    //   this.tab4 = false;
+    // },
+    // toggleTab4: function() {
+    //   this.tab1 = false;
+    //   this.tab2 = false;
+    //   this.tab3 = false;
+    //   this.tab4 = true;
+    //   this.navigation.navigate("Pay");
+    // }
   },
   beforeMount() {
     this.tab1 = false;

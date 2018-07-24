@@ -15,6 +15,7 @@ import Book from "./screens/Book";
 import Menu from "./screens/Menu";
 import Shop from "./screens/Shop";
 import Pay from "./screens/Pay";
+import CheckIn from "./screens/CheckIn";
 import Confirmation from "./screens/Confirmation";
 import Footer from "./components/Footer";
 
@@ -28,6 +29,7 @@ const AppNavigation = StackNavigator(
     Menu: Menu,
     Shop: Shop,
     Pay: Pay,
+    CheckIn: CheckIn,
     Confirmation: Confirmation,
     Footer: Footer
   },
