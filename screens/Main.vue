@@ -1,21 +1,6 @@
 <template>
   <nb-container>
     <Header :navigation="navigation"/>
-    <!-- <nb-content>
-      <view class="button-container">
-      <touchable-opacity :on-press="openReservations" class="home-button">
-        <text class="home-button-text">Book/View Tee Times</text>
-      </touchable-opacity>
-      <view>
-      <touchable-opacity :on-press="openEat" class="home-button">
-        <text class="home-button-text">Menu</text>
-      </touchable-opacity>
-      <touchable-opacity :on-press="openPay" class="home-button">
-        <text class="home-button-text">Shop</text>
-      </touchable-opacity>
-      </view>
-      </view>
-    </nb-content> -->
     <nb-content>
       <image
         :style="{ marginTop: 50, marginBottom: 10, alignSelf: 'center', width: 250, height: 50, }"
@@ -85,10 +70,6 @@ export default {
   },
   data: function() {
     return {
-      // tab1: false,
-      // tab2: false,
-      // tab3: false,
-      // tab4: false,
       token: "",
       teeTimes: [],
       shopItems: [],
@@ -111,34 +92,6 @@ export default {
     openCheckIn() {
       this.navigation.navigate("CheckIn");
     }
-    // toggleTab1: function() {
-    //   this.tab1 = true;
-    //   this.navigation.navigate("Book");
-    //   this.tab2 = false;
-    //   this.tab3 = false;
-    //   this.tab4 = false;
-    // },
-    // toggleTab2: function() {
-    //   this.tab1 = false;
-    //   this.tab2 = true;
-    //   this.navigation.navigate("Menu");
-    //   this.tab3 = false;
-    //   this.tab4 = false;
-    // },
-    // toggleTab3: function() {
-    //   this.tab1 = false;
-    //   this.tab2 = false;
-    //   this.tab3 = true;
-    //   this.navigation.navigate("Shop");
-    //   this.tab4 = false;
-    // },
-    // toggleTab4: function() {
-    //   this.tab1 = false;
-    //   this.tab2 = false;
-    //   this.tab3 = false;
-    //   this.tab4 = true;
-    //   this.navigation.navigate("Pay");
-    // }
   },
   beforeMount() {
     this.tab1 = false;
