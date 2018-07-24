@@ -1,6 +1,6 @@
 <template>
   <root>
-    <app-navigation></app-navigation>
+    <app-navigation :receipt="receipt"></app-navigation>
   </root>
 </template>
 
@@ -17,6 +17,7 @@ import Shop from "./screens/Shop";
 import Pay from "./screens/Pay";
 import CheckIn from "./screens/CheckIn";
 import Confirmation from "./screens/Confirmation";
+import Receipt from "./screens/Receipt";
 import Footer from "./components/Footer";
 
 // registering all native-base components to the global scope of the Vue
@@ -31,6 +32,7 @@ const AppNavigation = StackNavigator(
     Pay: Pay,
     CheckIn: CheckIn,
     Confirmation: Confirmation,
+    Receipt: Receipt,
     Footer: Footer
   },
   {
@@ -39,6 +41,11 @@ const AppNavigation = StackNavigator(
   }
 );
 export default {
-  components: { Root, AppNavigation }
+  components: { Root, AppNavigation },
+  data: function() {
+    return {
+      receipt: []
+    };
+  }
 };
 </script>

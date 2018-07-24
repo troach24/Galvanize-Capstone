@@ -12,14 +12,9 @@
       :item="item">
     </nb-list>
   </nb-content>
-    <!-- <nb-button
-      class="pay-screen-golf"
-      :onPress="() => handleBtnPress()" full>
-      <nb-text>Stock Your Cart</nb-text>
-    </nb-button> -->
   <nb-text :style="{ alignSelf: 'flex-end', fontWeight: 'bold', marginRight: 20 }">Total: ${{ total }}</nb-text>
   <nb-button class="pay-screen-golf" :onPress="confirmPayment" full success>
-    <nb-text>Confirm Payment</nb-text>
+    <nb-text :receipt="receipt">Confirm Payment</nb-text>
   </nb-button>
   <Footer :navigation="navigation"/>
     <!-- <nb-footer>
@@ -43,8 +38,6 @@
       </nb-footer-tab>
     </nb-footer> -->
   </nb-container>
-
-
 </template>
 
 <script>
@@ -60,6 +53,9 @@ export default {
   props: {
     navigation: {
       type: Object
+    },
+    receipt: {
+      type: Array
     }
   },
   components: {
@@ -106,7 +102,10 @@ export default {
       // toast popup to confirm?
     },
     confirmPayment() {
-      this.navigation.navigate("Confirmation");
+      this.receipt = this.cartItems;
+      // this.cartItems = {};
+      console.log(this.receipt);
+      this.navigation.navigate("Receipt");
       // empty
       Toast.show({
         text: "Success!",

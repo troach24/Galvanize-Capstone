@@ -20,7 +20,7 @@
           </nb-text>
         </nb-badge>
         <nb-icon name="cash" :active="tab4" />
-        <nb-text>Pay</nb-text>
+        <nb-text>Order</nb-text>
       </nb-button>
     </nb-footer-tab>
   </nb-footer>
