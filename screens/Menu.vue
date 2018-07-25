@@ -113,6 +113,7 @@ export default {
       this.cartItem = {
         name: item.name,
         price: item.price,
+        category: item.category,
         description: item.description,
         imageUrl: item.imageUrl,
         quantity: item.quantity
