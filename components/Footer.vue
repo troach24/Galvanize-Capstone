@@ -16,7 +16,7 @@
       <nb-button vertical badge :active="tab4" :onPress="toggleTab4">
         <nb-badge :style="{backgroundColor: 'green'}">
           <nb-text>
-            {{ cartSize }}
+            {{ cartLength || cartSize }}
           </nb-text>
         </nb-badge>
         <nb-icon name="cash" :active="tab4" />
@@ -32,10 +32,14 @@ export default {
   props: {
     navigation: {
       type: Object
+    },
+    cartLength: {
+      type: String
     }
   },
   data: function() {
     return {
+      // store.value
       tab1: false,
       tab2: false,
       tab3: false,
@@ -92,6 +96,7 @@ export default {
     this.tab2 = false;
     this.tab3 = false;
     this.tab4 = false;
-  }
+  },
+  computed: {}
 };
 </script>

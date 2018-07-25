@@ -10,6 +10,7 @@ import { Root } from "native-base";
 import { StackNavigator } from "vue-native-router";
 import { VueNativeBase } from "native-base";
 import { Permissions, Notifications } from "expo";
+import API from "./API.js";
 import MainScreen from "./screens/Main";
 import Book from "./screens/Book";
 import Menu from "./screens/Menu";

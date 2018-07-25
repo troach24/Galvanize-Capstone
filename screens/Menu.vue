@@ -27,7 +27,7 @@
       </nb-tab>
     </nb-tabs>
     </nb-content>
-    <Footer :navigation="navigation"/> 
+    <Footer :cartLength="cartLength" :navigation="navigation"/> 
     <!-- <nb-footer>
       <nb-footer-tab>
         <nb-button :active="tab1" :onPress="toggleTab1">
@@ -79,6 +79,8 @@ export default {
       foodItems: [],
       drinkItems: [],
       cartItem: {},
+      cartData: [],
+      cartLength: "",
       active: false
     };
   },
@@ -92,6 +94,8 @@ export default {
         this.drinkItems.push(item);
       }
     });
+    this.cartData = await API.getCartItems();
+    this.cartLength = this.cartData.cartItems.length;
   },
   methods: {
     createTab1: function() {
@@ -137,7 +141,7 @@ export default {
           mode: "cors",
           cache: "default"
         }
-      });
+      }).then(this.cartLength++);
     }
   }
 };
