@@ -2,7 +2,7 @@
   <nb-container>
     <Header :navigation="navigation"/>
     <nb-content>
-      <nb-text>Tap on items to add them to your cart</nb-text>
+      <nb-h3 :style="{ textAlign: 'center', marginTop: 30, marginBottom: 20 }">Tap on items to add them to your cart</nb-h3>
       <nb-list>
         <nb-list-item itemHeader first>
           <nb-text>PRO SHOP ITEMS</nb-text>
@@ -10,7 +10,6 @@
         <nb-list-item
         :on-press="() => addToCart(item)"
         :key="index" v-for="(item, index) in shopItems.shopItems" button>
-          <!-- <touchable-opacity :on-press="() => addToCart(item)"> -->
           <nb-left>
             <image
               :style="{ width: 100, height: 100, marginRight: 10}"
@@ -20,7 +19,6 @@
           <nb-right>
             <nb-text>${{ item.price }}</nb-text>
           </nb-right>
-          <!-- </touchable-opacity> -->
         </nb-list-item>
       </nb-list>
     </nb-content>

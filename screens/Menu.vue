@@ -2,25 +2,30 @@
   <nb-container>
     <Header :navigation="navigation"/>
     <nb-content>
-      <nb-text>Tap on items to add them to your cart</nb-text>
-      <nb-list>
-        <nb-list-item itemHeader first>
-          <nb-text>FOOD ITEMS</nb-text>
-        </nb-list-item>
-        <nb-list-item
-        :on-press="() => addToCart(item)"
-        :key="index" v-for="(item, index) in menuItems.menuItems" button>
-            <nb-left>
-              <image
-                :style="{ width: 100, height: 100, marginRight: 10}"
-                :source="{uri: item.imageUrl}"/>
-              <nb-text>{{ item.name }}</nb-text>
-            </nb-left>
-            <nb-right>
-              <nb-text>${{ item.price }}</nb-text>
-            </nb-right>
-        </nb-list-item>
-      </nb-list>
+      <nb-tabs>
+      <nb-tab :heading="createTab1()">
+        <nb-list>
+          <nb-h3 :style="{ textAlign: 'center', marginTop: 30 }">Tap on food items to add them to your cart</nb-h3>
+          <Food
+            :key="index"
+            v-for="(item, index) in foodItems"
+            :foodItems="foodItems"
+            :item="item"
+            :addToCart="addToCart"/>
+        </nb-list>
+      </nb-tab>
+      <nb-tab :heading="createTab2()">
+        <nb-list>
+          <nb-h3 :style="{ textAlign: 'center', marginTop: 30 }">Tap on drinks to add them to your cart</nb-h3>
+          <Drinks
+            :key="index"
+            v-for="(item, index) in drinkItems"
+            :drinkItems="drinkItems"
+            :item="item" 
+            :addToCart="addToCart"/>
+        </nb-list>
+      </nb-tab>
+    </nb-tabs>
     </nb-content>
     <Footer :navigation="navigation"/> 
     <!-- <nb-footer>
@@ -47,6 +52,10 @@
 </template>
 
 <script>
+import React from "react";
+import { TabHeading, Icon, Text, Item } from "native-base";
+import Food from "../components/Food";
+import Drinks from "../components/Drinks";
 import API from "../API.js";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -59,19 +68,47 @@ export default {
   },
   components: {
     Header,
+    Food,
+    Drinks,
     Footer
   },
   data: function() {
     return {
       menuItems: [],
-      cartItem: {}
+      foodItems: [],
+      drinkItems: [],
+      cartItem: {},
+      active: false
     };
   },
   async mounted() {
     this.menuItems = await API.getMenuItems();
     this.menuItems.menuItems.reverse();
+    this.menuItems.menuItems.forEach(item => {
+      if (item.category === "Food") {
+        this.foodItems.push(item);
+      } else if (item.category === "Drink") {
+        this.drinkItems.push(item);
+      }
+    });
   },
   methods: {
+    createTab1: function() {
+      return (
+        <TabHeading>
+          <Icon name="pizza" />
+          <Text>Food</Text>
+        </TabHeading>
+      );
+    },
+    createTab2: function() {
+      return (
+        <TabHeading>
+          <Icon name="beer" />
+          <Text>Drinks</Text>
+        </TabHeading>
+      );
+    },
     buildCartItem(item) {
       this.cartItem = {
         name: item.name,
@@ -92,8 +129,6 @@ export default {
           cache: "default"
         }
       });
-      // This will add the item to the cart page
-      // hmmmmmmm..... alert(`Added to cart`);
     }
   }
 };

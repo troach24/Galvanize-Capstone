@@ -104,7 +104,6 @@ export default {
     confirmPayment() {
       this.receipt = this.cartItems;
       // this.cartItems = {};
-      console.log(this.receipt);
       this.navigation.navigate("Receipt");
       // empty
       Toast.show({

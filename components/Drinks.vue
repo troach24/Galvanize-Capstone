@@ -1,5 +1,5 @@
 <template>
-  <nb-list-item>
+  <nb-list-item :on-press="() => addToCart(item)">
     <nb-left>
       <image
         :style="{ width: 100, height: 100, marginRight: 10 }"
@@ -14,6 +14,6 @@
 
 <script>
 export default {
-  props: ["cartItems", "item"]
+  props: ["menuItems", "item", "addToCart"]
 };
 </script>
