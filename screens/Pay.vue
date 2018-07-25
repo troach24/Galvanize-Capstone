@@ -107,13 +107,11 @@ export default {
       this.navigation.navigate("Receipt");
       // empty
       Toast.show({
-        text: "Success!",
-        // buttonText: "Okay",
+        text: "Payment approved!",
         buttonTextStyle: { color: "white" },
-        buttonStyle: { backgroundColor: "#5cb85c" },
         type: "success",
         position: "bottom",
-        duration: 7000
+        duration: 5000
       });
     }
   }
