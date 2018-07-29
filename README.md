@@ -11,10 +11,13 @@
 <p>
   Tech Stack:
   <br>
-  <img src="https://madewithvuejs.com/uploads/00/12/nativescript-vue.jpg" width="50" display="block">
-  <img src="https://arcweb.co/wp-content/uploads/2016/10/react-logo-1000-transparent.png" width="50" display="block">
-  <img src="https://nativebase.io/assets/img/front-page-icon.png" width="50" display="block">
-  <img src="https://cdn-images-1.medium.com/max/1920/1*EKXYhntirnqHjXdTGmLXyw.png" width="200" display="block">
+  <img src="https://madewithvuejs.com/uploads/00/12/nativescript-vue.jpg" width="100" display="block">
+  &nbsp &nbsp &nbsp
+  <img src="https://arcweb.co/wp-content/uploads/2016/10/react-logo-1000-transparent.png" width="75" display="block">
+  &nbsp &nbsp &nbsp
+  <img src="https://nativebase.io/assets/img/front-page-icon.png" width="75" display="block">
+  &nbsp &nbsp &nbsp
+  <img src="https://cdn-images-1.medium.com/max/1920/1*EKXYhntirnqHjXdTGmLXyw.png" width="250" display="block">
 </p>
 
 <!-- Tech stack:
