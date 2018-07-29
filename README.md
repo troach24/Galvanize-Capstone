@@ -1,3 +1,12 @@
-# Work in Progress - Golf Course App
+# 'Ready Golf' Prototype
 
-old header logo http://www.stickpng.com/assets/images/580b585b2edbce24c47b2afd.png
+## ⛳️
+
+## 🏌️‍
+
+### Faster check-in. Faster food and drink service. More time to focus on your game.
+
+<p align="center">
+  Ready Golf @ Crispy Flats Golf Course
+  <img src="assets/screen-shot.png" width="200" display="block">
+</p>
