@@ -1,8 +1,4 @@
-# 'Ready Golf' Prototype
-
-## ⛳️
-
-## 🏌️‍
+# ⛳️ 'Ready Golf' 🏌️‍ Prototype
 
 ### Faster check-in. Faster food and drink service. More time to focus on your game.
 
