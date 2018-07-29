@@ -5,5 +5,5 @@
 <p align="center">
   Ready Golf @ Crispy Flats Golf Course
   <br>
-  <img src="assets/screen-shot.png" width="200" display="block">
+  <img src="assets/screen-shot.png" width="400" display="block">
 </p>
