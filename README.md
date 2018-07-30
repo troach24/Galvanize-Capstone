@@ -8,29 +8,22 @@
 2.  Place Food and Bev orders in app, on or off the course.
 3.  Book tee times in advance.
 
-<!-- <div>
+
+##### Home Screen
+
 <p align="left">
   Ready Golf @ Crispy Flats Golf Course
   <br>
   <img src="assets/screen-shot.png" width="400" display="block">
 </p>
 
-<p align="right">
-  Order Demo
-  <br>
-  <img src="https://user-images.githubusercontent.com/33434059/43411158-a1881084-93e6-11e8-9102-97aa8f9d4603.gif" width="400" display="block">
-</p>
-</div> -->
-
-##### Home Screen
-
-![](assets/screen-shot.png)
-
 ### Demos:
 ##### Virtual Check-in
 ![check-in-demo](https://user-images.githubusercontent.com/33434059/43411792-7927a260-93e8-11e8-91a8-87839803ed60.gif)
+
 ##### Order Food & Drinks
 ![](https://user-images.githubusercontent.com/33434059/43411158-a1881084-93e6-11e8-9102-97aa8f9d4603.gif)
+
 
 <p>
   Tech Stack:
