@@ -27,3 +27,5 @@ See the link to the project proposal [here](https://gist.github.com/troach24/9cd
   &nbsp &nbsp &nbsp
   <img src="https://cdn-images-1.medium.com/max/1920/1*EKXYhntirnqHjXdTGmLXyw.png" width="250" display="block">
 </p>
+
+See the server side repository [here](https://github.com/troach24/Golf-Course-Server).
