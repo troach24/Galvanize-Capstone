@@ -4,12 +4,19 @@
 
 #### Key Features
 
-1.  Mobile check-in demo - add club house items such as range balls, tees, etc to be pre-stocked in golf cart.
-2.  Place Food and Bev orders in app, on or off the course.
-3.  Book tee times in advance.
+1.  Mobile check-in
+    - Check in on the app before leaving the house, or upon arrival at the course
+    - Add club house items such as range balls, tees, etc. to be pre-stocked in golf cart
+    - Go from your car to your cart, then straight to the range, practice green, or 1st tee box
+2.  Place Food and Drink orders
+    - Order lunch to pick up at the turn
+    - Order snacks and drinks while on the course
+    - Order a meal from the dining room to relax and enjoy while watching the Masters
+3.  Book tee times in advance
+    - Just like other tee-time apps, book your round in advance hassle free
 
 
-##### Home Screen
+#### Home Screen
 
 <p align="left">
   Ready Golf @ Crispy Flats Golf Course
