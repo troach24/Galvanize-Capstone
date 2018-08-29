@@ -2,6 +2,8 @@
 
 ### Faster check-in. Faster food and drink service. More time to focus on your game.
 
+See the prototype showcase on YouTube [here](https://www.youtube.com/watch?v=3_K_4LKQOhM&feature=youtu.be)
+
 #### Key Features
 
 1.  Mobile check-in
