@@ -3,51 +3,31 @@
     <Header :navigation="navigation"/>
     <nb-content>
       <nb-tabs>
-      <nb-tab :heading="createTab1()">
-        <nb-list>
-          <nb-h3 :style="{ textAlign: 'center', marginTop: 30 }">Tap on food items to add them to your cart</nb-h3>
-          <Food
-            :key="index"
-            v-for="(item, index) in foodItems"
-            :foodItems="foodItems"
-            :item="item"
-            :addToCart="addToCart"/>
-        </nb-list>
-      </nb-tab>
-      <nb-tab :heading="createTab2()">
-        <nb-list>
-          <nb-h3 :style="{ textAlign: 'center', marginTop: 30 }">Tap on drinks to add them to your cart</nb-h3>
-          <Drinks
-            :key="index"
-            v-for="(item, index) in drinkItems"
-            :drinkItems="drinkItems"
-            :item="item" 
-            :addToCart="addToCart"/>
-        </nb-list>
-      </nb-tab>
-    </nb-tabs>
+        <nb-tab :heading="createTab1()">
+          <nb-list>
+            <nb-h3 :style="{ textAlign: 'center', marginTop: 30 }">Tap on food items to add them to your cart</nb-h3>
+            <Food
+              :key="index"
+              v-for="(item, index) in foodItems"
+              :foodItems="foodItems"
+              :item="item"
+              :addToCart="addToCart"/>
+          </nb-list>
+        </nb-tab>
+        <nb-tab :heading="createTab2()">
+          <nb-list>
+            <nb-h3 :style="{ textAlign: 'center', marginTop: 30 }">Tap on drinks to add them to your cart</nb-h3>
+            <Drinks
+              :key="index"
+              v-for="(item, index) in drinkItems"
+              :drinkItems="drinkItems"
+              :item="item" 
+              :addToCart="addToCart"/>
+          </nb-list>
+        </nb-tab>
+      </nb-tabs>
     </nb-content>
     <Footer :cartLength="cartLength" :navigation="navigation"/> 
-    <!-- <nb-footer>
-      <nb-footer-tab>
-        <nb-button :active="tab1" :onPress="toggleTab1">
-          <nb-icon name="flag" :active="tab1" />
-          <nb-text>Book</nb-text>
-        </nb-button>
-        <nb-button :active="tab2" :onPress="toggleTab2">
-          <nb-icon name="pizza" :active="tab2" />
-          <nb-text>Menu</nb-text>
-        </nb-button>
-        <nb-button :active="tab3" :onPress="toggleTab3">
-          <nb-icon name="beer" :active="tab3" />
-          <nb-text>Shop</nb-text>
-        </nb-button>
-        <nb-button :active="tab4" :onPress="toggleTab4">
-          <nb-icon name="cash" :active="tab4" />
-          <nb-text>Pay</nb-text>
-        </nb-button>
-      </nb-footer-tab>
-    </nb-footer> -->
   </nb-container>
 </template>
 

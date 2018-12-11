@@ -23,29 +23,6 @@
         <nb-text>Shop Pro Shop</nb-text>
       </nb-button>
     </nb-content>
-    <!-- <nb-footer>
-      <nb-footer-tab>
-        <nb-button :active="tab1" :onPress="toggleTab1">
-          <nb-icon name="flag" :active="tab1" />
-          <nb-text>Book</nb-text>
-        </nb-button>
-        <nb-button :active="tab2" :onPress="toggleTab2">
-          <nb-icon name="paper" :active="tab2" />
-          <nb-text>Menu</nb-text>
-        </nb-button>
-        <nb-button :active="tab3" :onPress="toggleTab3">
-          <nb-icon name="cart" :active="tab3" />
-          <nb-text>Shop</nb-text>
-        </nb-button>
-        <nb-button vertical badge :active="tab4" :onPress="toggleTab4">
-          <nb-badge :style="{backgroundColor: 'green'}">
-            <nb-text>4</nb-text>
-          </nb-badge>
-          <nb-icon name="cash" :active="tab4" />
-          <nb-text>Pay</nb-text>
-        </nb-button>
-      </nb-footer-tab>
-    </nb-footer> -->
     <Footer :navigation="navigation"/>
   </nb-container>
 </template>

@@ -6,16 +6,15 @@
     "jest-expo": "~27.0.0",
     "metro-bundler": "^0.22.1",
     "react-devtools": "^3.2.3",
-    "react-native-scripts": "^1.14.0",
     "react-test-renderer": "16.3.1",
     "vue-native-scripts": "0.0.10"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
+    "start": "expo start",
+    "eject": "expo eject",
+    "android": "expo android",
+    "ios": "expo ios",
     "test": "jest",
     "devtools": "react-devtools"
   },

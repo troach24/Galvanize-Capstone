@@ -36,8 +36,6 @@ export default {
           cache: "default"
         }
       });
-      // This will add the item to the cart page
-      // hmmmmmmm..... alert(`Added to cart`);
     }
   
 };
