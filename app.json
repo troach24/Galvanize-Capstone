@@ -1,5 +1,9 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "sdkVersion": "27.0.0",
+    "name": "Ready Golf!",
+    "slug": "ready-golf",
+    "version": "0.1.0",
+    "description": ""
   }
 }
