@@ -4,6 +4,7 @@
     "name": "Ready Golf!",
     "slug": "ready-golf",
     "version": "0.1.0",
-    "description": ""
+    "description": "An application designed to enhance the golfing experience by enabling the user to virtually check in, order food and drinks from the app while on the course, and book tee times in advance.",
+    "githubUrl": "https://github.com/troach24/Galvanize-Capstone"
   }
 }

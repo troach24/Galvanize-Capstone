@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { Toast } from "native-base";
 import API from "../API.js";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -64,6 +65,13 @@ export default {
     },
     addToCart(item) {
       this.buildCartItem(item);
+      Toast.show({
+        text: `Added ${item.name} to cart!`,
+        buttonTextStyle: { color: "white" },
+        type: "success",
+        position: "bottom",
+        duration: 2500
+      });
       return fetch(`${API.API_URL}cart`, {
         method: "POST",
         body: JSON.stringify(this.cartItem),

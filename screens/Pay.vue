@@ -7,6 +7,7 @@
         <CartItem
         :key="index"
         v-for="(item, index) in cartItems.cartItems"
+        v-if="item.active"
         :cartItems="cartItems"
         v-model="this.cartItems"
         :item="item">
@@ -60,8 +61,8 @@ export default {
   methods: {
     getTotal() {
       var result = 0;
-      this.cartItems.cartItems.forEach(item => {
-        result += item.price;
+      this.cartItems.cartItems.map(item => {
+        return item.active ? result += item.price : null
       });
       this.total = result;
     },
@@ -78,9 +79,26 @@ export default {
       }).then((this.cartItems = API.getCartItems()));
       // need two fetch reqs for some reason...^^^
     },
+    archiveTransaction(item, id) {
+      return fetch(`${API.API_URL}cart/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(item),
+        headers: {
+          "content-type": "application/json",
+          mode: "cors",
+          cache: "default"
+        }
+      })
+    },
+    createReceipt() {
+      this.receipt = this.cartItems.cartItems;
+    },
     confirmPayment() {
-      this.receipt = this.cartItems;
-      // this.cartItems = {};
+      this.createReceipt()
+      this.cartItems.cartItems.map((item) => {
+        item.active = false;
+        return this.archiveTransaction(item, item.id);
+      });
       this.navigation.navigate("Receipt");
       // empty
       Toast.show({

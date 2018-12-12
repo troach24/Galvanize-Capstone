@@ -3,7 +3,7 @@
     <Header :navigation="navigation"/>
     <nb-content>
       <nb-tabs>
-        <nb-tab :heading="createTab1()">
+        <nb-tab :heading="createFoodTab()">
           <nb-list>
             <nb-h3 :style="{ textAlign: 'center', marginTop: 30 }">Tap on food items to add them to your cart</nb-h3>
             <Food
@@ -14,7 +14,7 @@
               :addToCart="addToCart"/>
           </nb-list>
         </nb-tab>
-        <nb-tab :heading="createTab2()">
+        <nb-tab :heading="createDrinkTab()">
           <nb-list>
             <nb-h3 :style="{ textAlign: 'center', marginTop: 30 }">Tap on drinks to add them to your cart</nb-h3>
             <Drinks
@@ -60,8 +60,7 @@ export default {
       drinkItems: [],
       cartItem: {},
       cartData: [],
-      cartLength: "",
-      active: false
+      cartLength: Number
     };
   },
   async mounted() {
@@ -78,7 +77,8 @@ export default {
     this.cartLength = this.cartData.cartItems.length;
   },
   methods: {
-    createTab1: function() {
+    // JSX
+    createFoodTab: function() {
       return (
         <TabHeading>
           <Icon name="pizza" />
@@ -86,7 +86,7 @@ export default {
         </TabHeading>
       );
     },
-    createTab2: function() {
+    createDrinkTab: function() {
       return (
         <TabHeading>
           <Icon name="beer" />

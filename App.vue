@@ -47,6 +47,9 @@ export default {
     return {
       receipt: []
     };
+  },
+  computed() {
+    return this.receipt;
   }
 };
 </script>
