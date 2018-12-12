@@ -14,26 +14,6 @@
       </nb-card>
     </nb-content>
     <Footer :navigation="navigation" />
-    <!-- <nb-footer>
-      <nb-footer-tab>
-        <nb-button :active="tab1" :onPress="toggleTab1">
-          <nb-icon name="flag" :active="tab1" />
-          <nb-text>Book</nb-text>
-        </nb-button>
-        <nb-button :active="tab2" :onPress="toggleTab2">
-          <nb-icon name="pizza" :active="tab2" />
-          <nb-text>Menu</nb-text>
-        </nb-button>
-        <nb-button :active="tab3" :onPress="toggleTab3">
-          <nb-icon name="beer" :active="tab3" />
-          <nb-text>Shop</nb-text>
-        </nb-button>
-        <nb-button :active="tab4" :onPress="toggleTab4">
-          <nb-icon name="cash" :active="tab4" />
-          <nb-text>Pay</nb-text>
-        </nb-button>
-      </nb-footer-tab>
-    </nb-footer> -->
   </nb-container>
 </template>
 

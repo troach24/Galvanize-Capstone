@@ -24,7 +24,6 @@
     </nb-content>
     <Footer :navigation="navigation"/>
   </nb-container>
-
 </template>
 
 <script>
