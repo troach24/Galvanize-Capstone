@@ -45,11 +45,6 @@ export default {
         "Friday August 3rd"
       ]
     };
-  },
-  methods: {
-    openEat() {
-      this.navigation.navigate("Menu");
-    }
   }
 };
 </script>
