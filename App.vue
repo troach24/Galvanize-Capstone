@@ -1,6 +1,6 @@
 <template>
   <root>
-    <app-navigation :receipt="receipt"></app-navigation>
+    <app-navigation></app-navigation>
   </root>
 </template>
 
@@ -43,13 +43,5 @@ const AppNavigation = StackNavigator(
 );
 export default {
   components: { Root, AppNavigation },
-  data: function() {
-    return {
-      receipt: []
-    };
-  },
-  computed() {
-    return this.receipt;
-  }
 };
 </script>

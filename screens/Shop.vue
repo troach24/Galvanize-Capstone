@@ -80,8 +80,6 @@ export default {
           cache: "default"
         }
       });
-      // render/update cart 'icon' quantity on POST
-      // toast popup to confirm?
     }
   }
 };

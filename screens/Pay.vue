@@ -4,6 +4,8 @@
     <nb-content>
       <nb-text>Review the items below then confirm your purchase.</nb-text>
       <nb-list>
+
+        <!-- Show only active cart items -->
         <CartItem
         :key="index"
         v-for="(item, index) in cartItems.cartItems"
@@ -23,7 +25,6 @@
 
 <script>
 import API from "../API.js";
-import React from "react";
 import { Toast } from "native-base";
 import { ActionSheet } from "native-base";
 import Header from "../components/Header";
@@ -34,9 +35,6 @@ export default {
   props: {
     navigation: {
       type: Object
-    },
-    receipt: {
-      type: Array
     }
   },
   components: {
@@ -49,7 +47,8 @@ export default {
       menuItems: [],
       shopItems: [],
       cartItems: [],
-      total: 0
+      total: 0,
+      receipt: []
     };
   },
   async mounted() {
@@ -67,7 +66,6 @@ export default {
       this.total = result;
     },
     addToCart(item) {
-      console.log("item: ", item);
       return fetch(`${API.API_URL}cart`, {
         method: "POST",
         body: JSON.stringify(item),
@@ -77,7 +75,6 @@ export default {
           cache: "default"
         }
       }).then((this.cartItems = API.getCartItems()));
-      // need two fetch reqs for some reason...^^^
     },
     archiveTransaction(item, id) {
       return fetch(`${API.API_URL}cart/${id}`, {
@@ -91,16 +88,11 @@ export default {
       })
     },
     createReceipt() {
-      this.receipt = this.cartItems.cartItems;
+      this.receipt = this.cartItems.cartItems.filter(item => item.active)
     },
     confirmPayment() {
       this.createReceipt()
-      this.cartItems.cartItems.map((item) => {
-        item.active = false;
-        return this.archiveTransaction(item, item.id);
-      });
-      this.navigation.navigate("Receipt");
-      // empty
+      this.navigation.navigate("Receipt", this.receipt);
       Toast.show({
         text: "Payment approved!",
         buttonTextStyle: { color: "white" },

@@ -23,7 +23,7 @@
     <nb-text :style="{ alignSelf: 'flex-end', fontWeight: 'bold', marginRight: 20 }">Total: ${{ total.toFixed(2) }}</nb-text>
     <nb-button
       class="pay-screen-golf"
-      :onPress="() => handleBtnPress()" full>
+      :onPress="() => openActionSheet()" full>
       <nb-text>Stock Your Cart</nb-text>
     </nb-button>
     <nb-button class="pay-screen-golf" :onPress="confirmPayment" full success>
@@ -35,7 +35,6 @@
 
 <script>
 import API from "../API.js";
-import React from "react";
 import { Toast } from "native-base";
 import { ActionSheet } from "native-base";
 import Header from "../components/Header";
@@ -122,7 +121,7 @@ export default {
       });
       this.total = result;
     },
-    handleBtnPress: function() {
+    openActionSheet: function() {
       ActionSheet.show(
         {
           options: this.btnOptions,
@@ -151,7 +150,6 @@ export default {
       this.checkInItems = [];
       Toast.show({
         text: "Success!",
-        // buttonText: "Okay",
         buttonTextStyle: { color: "white" },
         buttonStyle: { backgroundColor: "#5cb85c" },
         type: "success",

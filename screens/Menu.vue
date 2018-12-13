@@ -27,12 +27,12 @@
         </nb-tab>
       </nb-tabs>
     </nb-content>
-    <Footer :cartLength="cartLength" :navigation="navigation"/> 
+    <Footer :navigation="navigation"/> 
   </nb-container>
 </template>
 
 <script>
-import React from "react";
+import React from 'react';
 import { TabHeading, Icon, Text, Item } from "native-base";
 import { Toast } from "native-base";
 import Food from "../components/Food";
@@ -59,8 +59,7 @@ export default {
       foodItems: [],
       drinkItems: [],
       cartItem: {},
-      cartData: [],
-      cartLength: Number
+      cartData: []
     };
   },
   async mounted() {
@@ -74,10 +73,9 @@ export default {
       }
     });
     this.cartData = await API.getCartItems();
-    this.cartLength = this.cartData.cartItems.length;
+    this.cartLength = this.cartData.cartItems.filter(item => item.active).length;
   },
   methods: {
-    // JSX
     createFoodTab: function() {
       return (
         <TabHeading>
@@ -121,7 +119,7 @@ export default {
           mode: "cors",
           cache: "default"
         }
-      }).then(this.cartLength++);
+      })
     }
   }
 };

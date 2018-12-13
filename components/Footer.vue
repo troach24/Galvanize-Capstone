@@ -16,7 +16,6 @@
       <nb-button vertical badge :active="tab4" :onPress="toggleTab4">
         <nb-badge :style="{backgroundColor: 'green'}">
           <nb-text>
-            <!-- cart size bug example -->
             {{ cartSize }}
           </nb-text>
         </nb-badge>
@@ -30,18 +29,9 @@
 <script>
 import API from "../API.js";
 export default {
-  props: ['navigation', 'cartLength'],
-  // props: {
-  //   navigation: {
-  //     type: Object
-  //   },
-  //   cartLength: {
-  //     type: String
-  //   }
-  // },
+  props: ['navigation'],
   data: function() {
     return {
-      // store.value
       tab1: false,
       tab2: false,
       tab3: false,
@@ -101,6 +91,5 @@ export default {
     this.tab3 = false;
     this.tab4 = false;
   },
-  computed: {}
 };
 </script>
