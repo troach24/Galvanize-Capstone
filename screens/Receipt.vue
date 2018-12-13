@@ -54,6 +54,7 @@ export default {
       item.active = false;
       return this.archiveTransaction(item, item.id);
     });
+    // NAVIGATION PROP
     this.receipt = this.navigation.state.params
     this.getTotal();
   },
