@@ -4,8 +4,7 @@
     <nb-content>
       <nb-text>Review the items below then confirm your purchase.</nb-text>
       <nb-list>
-
-        <!-- Show only active cart items -->
+        <!-- show only active cart items -->
         <CartItem
         :key="index"
         v-for="(item, index) in cartItems.cartItems"
@@ -64,17 +63,6 @@ export default {
         return item.active ? result += item.price : null
       });
       this.total = result;
-    },
-    addToCart(item) {
-      return fetch(`${API.API_URL}cart`, {
-        method: "POST",
-        body: JSON.stringify(item),
-        headers: {
-          "content-type": "application/json",
-          mode: "cors",
-          cache: "default"
-        }
-      }).then((this.cartItems = API.getCartItems()));
     },
     archiveTransaction(item, id) {
       return fetch(`${API.API_URL}cart/${id}`, {
